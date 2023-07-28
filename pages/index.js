@@ -99,7 +99,7 @@ export default function Home({content}) {
               placeholder="your message"
             ></textarea>
           </div>
-          <div className="flex flex-row justify-end">
+          <div className="flex flex-row justify-end mt-4">
             <button className="bg-black text-white p-3 mt-2 md:mt-4">LEARN MORE</button>
           </div>
         </div>
