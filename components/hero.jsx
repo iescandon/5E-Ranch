@@ -2,7 +2,7 @@
 export default function Hero({content}) {
   return (
     <section>
-      <div className='relative top-0 left-0 h-[550px] md:h-[450px] lg:h-[600px]'>
+      <div className='relative top-0 left-0 h-[500px] md:h-[450px] lg:h-[600px]'>
         <img src={content[0].fields.otherPics[5].fields.file.url} className='h-full w-full object-cover'/>
         {/* <div className='absolute inset-0 flex flex-row items-end justify-start'> */}
         {/* <div className='absolute inset-0 flex flex-col items-center justify-center'> */}
