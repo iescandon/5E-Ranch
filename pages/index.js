@@ -70,7 +70,7 @@ export default function Home({content}) {
           </div>
         </div>
       </div>
-      <div className='h-[500px] hidden md:block'></div>
+      <div className='h-[500px]'></div>
       {/* contact and map */}
       <div className='relative flex flex-col md:flex-row'>
         {/* <div className='relative w-full md:w-[55%] px-4 py-8 md:p-6 lg:p-8'>
