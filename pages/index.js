@@ -1,5 +1,5 @@
 import Hero from '@/components/hero';
-import Nav from '@/components/nav';
+// import Nav from '@/components/nav';
 import getContent from '@/utils/getContent'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
