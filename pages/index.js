@@ -22,6 +22,7 @@ export default function Home({content}) {
           <h4 className='text-xs lg:text-sm font-jakarta'>WHO WE ARE</h4>
           <h3 className='text-xl md:text-2xl lg:text-3xl font-bold font-jakarta pb-4'>Naturally Better</h3>
           <p className='text-sm font-jakarta pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
+          <p className='pb-6'>Located near Guthrie, Texas, the ranch is dedicated to the production of the finest American Quarter Horses and Angus cattle in the country, as well as providing state-of-the-art veterinary and reproductive services.</p>
           <button className="bg-black text-white p-3">LEARN MORE</button>
         </div>
       </div>
@@ -69,9 +70,42 @@ export default function Home({content}) {
           </div>
         </div>
       </div>
+      <div className='h-[500px]'></div>
       {/* contact and map */}
-      <div className='flex flex-col md:flex-row'>
-        <div className='relative w-full md:w-[55%] px-4 py-8 md:p-6 lg:p-8'>
+      <div className='relative flex flex-col md:flex-row'>
+        {/* <div className='relative w-full md:w-[55%] px-4 py-8 md:p-6 lg:p-8'>
+          <h4 className='text-xs lg:text-sm font-jakarta'>WHO WE ARE</h4>
+          <h3 className='text-xl md:text-2xl lg:text-3xl font-bold font-jakarta pb-4'>Naturally Better</h3>
+          <p className='text-sm font-jakarta pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
+          <div className='flex flex-col'>
+            <input
+              className="p-2 border rounded"
+              id="name"
+              type="name"
+              name="name"
+              placeholder="your name"
+              required
+            />
+            <input
+              className="mt-2 md:mt-4 p-2 border rounded"
+              id="email"
+              type="email"
+              name="email"
+              placeholder="your e-mail"
+              required
+            />
+            <textarea
+              className="mt-2 md:mt-4 p-2 border rounded"
+              id="message"
+              name="message"
+              placeholder="your message"
+            ></textarea>
+          </div>
+          <div className="flex flex-row justify-end mt-4">
+            <button className="bg-black text-white p-3 mt-2 md:mt-4">LEARN MORE</button>
+          </div>
+        </div> */}
+        <div className='absolute top-0 left-0 w-full md:w-[55%] px-4 py-8 md:p-6 lg:p-8'>
           <h4 className='text-xs lg:text-sm font-jakarta'>WHO WE ARE</h4>
           <h3 className='text-xl md:text-2xl lg:text-3xl font-bold font-jakarta pb-4'>Naturally Better</h3>
           <p className='text-sm font-jakarta pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
@@ -103,9 +137,13 @@ export default function Home({content}) {
             <button className="bg-black text-white p-3 mt-2 md:mt-4">LEARN MORE</button>
           </div>
         </div>
-        <div className='w-full md:w-[45%]'>
-          <img src={`https://api.mapbox.com/styles/v1/iescandon/clkmtugtb01a901qk42r81ahu/static/pin-s+000(-98.259440,26.281840)/-99.1707,31.3915,4/500x400?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full object-cover" alt=""></img>
+        <div className='w-full h-800px md:h-[450px]'>
+          <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-114.145047,31.436473,4/1000x450?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover hidden md:block" alt=""></img>
+          <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-100.263549,38.588760,4/500x800?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover md:hidden" alt=""></img>
         </div>
+        {/* <div className='w-full md:w-[45%]'>
+          <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-99.1707,31.3915,4/500x400?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover" alt=""></img>
+        </div> */}
       </div>
       {/* footer */}
       <footer className="px-4 md:px-8 lg:px-12 py-8 md:py-6 bg-black text-white ">
