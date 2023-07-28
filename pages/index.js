@@ -70,7 +70,7 @@ export default function Home({content}) {
           </div>
         </div>
       </div>
-      <div className='h-[500px]'></div>
+      <div className='h-[500px] hidden md:block'></div>
       {/* contact and map */}
       <div className='relative flex flex-col md:flex-row'>
         {/* <div className='relative w-full md:w-[55%] px-4 py-8 md:p-6 lg:p-8'>
@@ -137,9 +137,9 @@ export default function Home({content}) {
             <button className="bg-black text-white p-3 mt-2 md:mt-4">LEARN MORE</button>
           </div>
         </div>
-        <div className='w-full h-800px md:h-[450px]'>
+        <div className='w-full h-800px md:h-[450px] border-t-2 border-slate-200 md:border-t-0'>
           <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-114.145047,31.436473,4/1000x450?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover hidden md:block" alt=""></img>
-          <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-100.263549,38.588760,4/500x800?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover md:hidden" alt=""></img>
+          <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-99.777608,39.203330,4/500x800?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover md:hidden" alt=""></img>
         </div>
         {/* <div className='w-full md:w-[45%]'>
           <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-99.1707,31.3915,4/500x400?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover" alt=""></img>
