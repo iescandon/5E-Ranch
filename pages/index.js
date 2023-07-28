@@ -141,6 +141,7 @@ export default function Home({content}) {
           <div className="flex flex-col space-y-2 h-full md:pb-0">
             <img src={content[0].fields.logos[7].fields.file.url} className='max-h-[70px] h-full'/>
           </div>
+          {/* add copyright stuff */}
         </div>
       </footer>
     </main>
