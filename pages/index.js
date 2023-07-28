@@ -75,7 +75,33 @@ export default function Home({content}) {
           <h4 className='text-xs lg:text-sm font-jakarta'>WHO WE ARE</h4>
           <h3 className='text-xl md:text-2xl lg:text-3xl font-bold font-jakarta pb-4'>Naturally Better</h3>
           <p className='text-sm font-jakarta pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
-          <button className="bg-black text-white p-3">LEARN MORE</button>
+          <div className='flex flex-col'>
+            <input
+              className="p-2 border rounded"
+              id="name"
+              type="name"
+              name="name"
+              placeholder="your name"
+              required
+            />
+            <input
+              className="mt-2 md:mt-4 p-2 border rounded"
+              id="email"
+              type="email"
+              name="email"
+              placeholder="your e-mail"
+              required
+            />
+            <textarea
+              className="mt-2 md:mt-4 p-2 border rounded"
+              id="message"
+              name="message"
+              placeholder="your message"
+            ></textarea>
+          </div>
+          <div className="flex flex-row justify-end">
+            <button className="bg-black text-white p-3 mt-2 md:mt-4">LEARN MORE</button>
+          </div>
         </div>
         <div className='w-full md:w-[45%]'>
           <img src={`https://api.mapbox.com/styles/v1/iescandon/clkmtugtb01a901qk42r81ahu/static/pin-s+000(-98.259440,26.281840)/-99.1707,31.3915,4/500x400?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full object-cover" alt=""></img>
