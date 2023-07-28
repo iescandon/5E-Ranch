@@ -25,36 +25,43 @@ export default function Home({content}) {
           <button className="bg-black text-white p-3">SHOP NOW</button>
         </div>
       </div>
-      {/* line break 5E */}
-      {/* <div className='relative h-[150px] w-full bg-black'>
-        <img src={content[0].fields.logos[7].fields.file.url} className='h-full w-full p-4'/>
+      {/* line break photos */}
+      {/* <div className='relative w-full flex flex-row'>
+        <img src={content[0].fields.otherPics[13].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
+        <img src={content[0].fields.otherPics[15].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
+        <img src={content[0].fields.otherPics[17].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
+        <img src={content[0].fields.otherPics[19].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
+        <img src={content[0].fields.otherPics[17].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
+        <img src={content[0].fields.otherPics[18].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
       </div> */}
       {/* our products */}
-      <div className='relative p-4 md:p-6 lg:p-8 bg-slate-200 flex flex-col items-center'>
-        <img src='/images/cattle.png' className='h-[200px] w-[300px]'/>
-        <h2 className='text-xl md:text-2xl lg:text-3xl font-extrabold font-jakarta pb-4 bg-slate-200 text-center'>A historic Texas ranch built on a legacy of people with passion, quarter horses with pedigree and cattle with heritage</h2>
-        <div className="border border-slate-400 w-1/3 m-4"></div>
-        <p className='p-4'>Located near Guthrie, Texas, the ranch is dedicated to the production of the finest American Quarter Horses and Angus cattle in the country, as well as providing state-of-the-art veterinary and reproductive services.</p>
-        <div className='flex flex-row flex-wrap justify-center'>
-          {/* card */}
-          <div className='w-[300px] h-[350px] rounded-lg shadow-lg m-4 bg-cover bg-center' style={{ backgroundImage: `url(/images/wagyu.png)` }} >
-            <div className='flex flex-col h-full justify-end p-8'>
-              <h5 className='text-xl font-bold pt-2 text-white pb-2 drop-shadow-md'>Beef</h5>
-              <button className="border-white border-2 text-white p-3 drop-shadow-md">LEARN MORE</button>
+      <div className='flex flex-row justify-center p-4 md:p-6 lg:p-8 bg-slate-200'>
+        <div className='relative flex flex-col items-center max-w-[1100px]'>
+          <img src='/images/cattle.png' className='h-[200px] w-[300px]'/>
+          <h2 className='text-xl md:text-2xl lg:text-3xl font-extrabold font-jakarta pb-4 text-center'>A historic Texas ranch built on a legacy of people with passion, quarter horses with pedigree and cattle with heritage</h2>
+          <div className="border border-slate-400 w-1/3 m-4"></div>
+          <p className='p-4'>Located near Guthrie, Texas, the ranch is dedicated to the production of the finest American Quarter Horses and Angus cattle in the country, as well as providing state-of-the-art veterinary and reproductive services.</p>
+          <div className='flex flex-row flex-wrap justify-center'>
+            {/* card */}
+            <div className='w-[300px] h-[350px] rounded-lg shadow-lg m-4 bg-cover bg-center' style={{ backgroundImage: `url(/images/wagyu.png)` }} >
+              <div className='flex flex-col h-full justify-end p-8'>
+                <h5 className='text-xl font-bold pt-2 text-white pb-2 drop-shadow-md'>Beef</h5>
+                <button className="border-white border-2 text-white p-3 drop-shadow-md">LEARN MORE</button>
+              </div>
             </div>
-          </div>
-          {/* card */}
-          <div className='w-[300px] h-[350px] rounded-lg shadow-lg m-4 bg-cover bg-center' style={{ backgroundImage: `url(${content[0].fields.otherPics[16].fields.file.url})` }} >
-            <div className='flex flex-col h-full justify-end p-8'>
-              <h5 className='text-xl font-bold pt-2 text-white pb-2 drop-shadow-md'>Cattle</h5>
-              <button className="border-white border-2 text-white p-3 drop-shadow-md">LEARN MORE</button>
+            {/* card */}
+            <div className='w-[300px] h-[350px] rounded-lg shadow-lg m-4 bg-cover bg-center' style={{ backgroundImage: `url(${content[0].fields.otherPics[16].fields.file.url})` }} >
+              <div className='flex flex-col h-full justify-end p-8'>
+                <h5 className='text-xl font-bold pt-2 text-white pb-2 drop-shadow-md'>Cattle</h5>
+                <button className="border-white border-2 text-white p-3 drop-shadow-md">LEARN MORE</button>
+              </div>
             </div>
-          </div>
-        {/* card */}
-          <div className='w-[300px] h-[350px]rounded-lg shadow-lg m-4 bg-cover bg-center' style={{ backgroundImage: `url(${content[0].fields.otherPics[12].fields.file.url})` }} >
-            <div className='flex flex-col h-full justify-end p-8'>
-              <h5 className='text-xl font-bold pt-2 text-white pb-2'>Merch</h5>
-              <button className="border-white border-2 text-white p-3">LEARN MORE</button>
+          {/* card */}
+            <div className='w-[300px] h-[350px] rounded-lg shadow-lg m-4 bg-cover bg-center' style={{ backgroundImage: `url(${content[0].fields.otherPics[12].fields.file.url})` }} >
+              <div className='flex flex-col h-full justify-end p-8'>
+                <h5 className='text-xl font-bold pt-2 text-white pb-2'>Merch</h5>
+                <button className="border-white border-2 text-white p-3">LEARN MORE</button>
+              </div>
             </div>
           </div>
         </div>
