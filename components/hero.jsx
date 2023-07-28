@@ -8,7 +8,7 @@ export default function Hero({content}) {
         {/* <div className='absolute inset-0 flex flex-col items-center justify-center'> */}
         <div className='absolute inset-0 bg-gradient-to-b from-transparent to-black from-40% flex flex-col items-center justify-center'>
           {/* <img src={content[0].fields.logos[7].fields.file.url} className='h-[150px] md:h-[250px] lg:h-[250px] drop-shadow-2xl'/> */}
-          <p className="text-3xl md:text-4xl lg:text-5xl text-white font-extrabold text-center drop-shadow-md font-jakarta w-[400px] md:w-[600px] lg:w-[800px]">Bringing naturally and ethically raised beef to your table</p>
+          <p className="text-3xl md:text-4xl lg:text-5xl text-white font-extrabold text-center drop-shadow-md font-jakarta w-[350px] md:w-[600px] lg:w-[800px]">Bringing naturally and ethically raised beef to your table</p>
           {/* <button className="bg-yellow-400 p-3">LEARN MORE</button> */}
         </div>
         <div className="absolute inset-0 flex flex-row justify-center m-4">
