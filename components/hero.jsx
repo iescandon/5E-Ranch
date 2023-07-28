@@ -12,7 +12,7 @@ export default function Hero({content}) {
           {/* <button className="bg-yellow-400 p-3">LEARN MORE</button> */}
         </div>
         <div className="absolute inset-0 flex flex-row justify-center m-4">
-        <img src={content[0].fields.logos[5].fields.file.url}  alt="" className="absolute h-[60px] lg:h-[100px]"/>
+        <img src={content[0].fields.logos[5].fields.file.url}  alt="" className="absolute h-[70px] md:h-[80px] lg:h-[100px]"/>
         </div>
       </div>
     </section>
