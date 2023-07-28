@@ -9,7 +9,7 @@ import getContent from '@/utils/getContent'
 export default function Home({content}) {
   return (
     <main>
-      <Nav content={content} />
+      {/* <Nav content={content} /> */}
       <Hero content={content} />
       {/* <div className='flex flex-row justify-center h-[400px]'> */}
       <div className='relative flex flex-col-reverse md:flex-row justify-center w-full px-4 py-8 md:p-6 lg:p-8'>
