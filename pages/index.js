@@ -19,10 +19,10 @@ export default function Home({content}) {
           <img src={content[0].fields.otherPics[24].fields.file.url} className=""/>
         </div>
         <div className='relative w-full md:w-1/2 md:pl-8'>
-          <h4 className='text-xs lg:text-sm font-jakarta'>JAPANESE WAGYU BEEF</h4>
+          <h4 className='text-xs lg:text-sm font-jakarta'>WHO WE ARE</h4>
           <h3 className='text-xl md:text-2xl lg:text-3xl font-bold font-jakarta pb-4'>Naturally Better</h3>
           <p className='text-sm font-jakarta pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
-          <button className="bg-black text-white p-3">SHOP NOW</button>
+          <button className="bg-black text-white p-3">LEARN MORE</button>
         </div>
       </div>
       {/* line break photos */}
@@ -37,7 +37,10 @@ export default function Home({content}) {
       {/* our products */}
       <div className='flex flex-row justify-center p-4 md:p-6 lg:p-8 bg-slate-200'>
         <div className='relative flex flex-col items-center max-w-[1100px]'>
-          <img src='/images/cattle.png' className='h-[200px] w-[300px]'/>
+          {/* <img src='/images/cattle.png' className='h-[200px] w-[300px]'/> */}
+          <div className='h-[250px]'>
+            <img src={content[0].fields.logos[2].fields.file.url} className='h-full'/>
+          </div>
           <h2 className='text-xl md:text-2xl lg:text-3xl font-extrabold font-jakarta pb-4 text-center'>A historic Texas ranch built on a legacy of people with passion, quarter horses with pedigree and cattle with heritage</h2>
           <div className="border border-slate-400 w-1/3 m-4"></div>
           <p className='p-4'>Located near Guthrie, Texas, the ranch is dedicated to the production of the finest American Quarter Horses and Angus cattle in the country, as well as providing state-of-the-art veterinary and reproductive services.</p>
@@ -46,28 +49,38 @@ export default function Home({content}) {
             <div className='w-[300px] h-[350px] rounded-lg shadow-lg m-4 bg-cover bg-center' style={{ backgroundImage: `url(/images/wagyu.png)` }} >
               <div className='flex flex-col h-full justify-end p-8'>
                 <h5 className='text-xl font-bold pt-2 text-white pb-2 drop-shadow-md'>Beef</h5>
-                <button className="border-white border-2 text-white p-3 drop-shadow-md">LEARN MORE</button>
+                <button className="border-white border-2 text-white p-3 drop-shadow-md bg-black bg-opacity-30">SHOP NOW</button>
               </div>
             </div>
             {/* card */}
             <div className='w-[300px] h-[350px] rounded-lg shadow-lg m-4 bg-cover bg-center' style={{ backgroundImage: `url(${content[0].fields.otherPics[16].fields.file.url})` }} >
               <div className='flex flex-col h-full justify-end p-8'>
                 <h5 className='text-xl font-bold pt-2 text-white pb-2 drop-shadow-md'>Cattle</h5>
-                <button className="border-white border-2 text-white p-3 drop-shadow-md">LEARN MORE</button>
+                <button className="border-white border-2 text-white p-3 drop-shadow-md bg-black bg-opacity-30">SHOP NOW</button>
               </div>
             </div>
           {/* card */}
             <div className='w-[300px] h-[350px] rounded-lg shadow-lg m-4 bg-cover bg-center' style={{ backgroundImage: `url(${content[0].fields.otherPics[12].fields.file.url})` }} >
               <div className='flex flex-col h-full justify-end p-8'>
                 <h5 className='text-xl font-bold pt-2 text-white pb-2'>Merch</h5>
-                <button className="border-white border-2 text-white p-3">LEARN MORE</button>
+                <button className="border-white border-2 text-white p-3 bg-black bg-opacity-30">SHOP NOW</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* map */}
-      {/* contact */}
+      {/* contact and map */}
+      <div className='flex flex-col md:flex-row'>
+        <div className='relative w-full md:w-[55%] px-4 py-8 md:p-6 lg:p-8'>
+          <h4 className='text-xs lg:text-sm font-jakarta'>WHO WE ARE</h4>
+          <h3 className='text-xl md:text-2xl lg:text-3xl font-bold font-jakarta pb-4'>Naturally Better</h3>
+          <p className='text-sm font-jakarta pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
+          <button className="bg-black text-white p-3">LEARN MORE</button>
+        </div>
+        <div className='w-full md:w-[45%]'>
+          <img src={`https://api.mapbox.com/styles/v1/iescandon/clkmtugtb01a901qk42r81ahu/static/pin-s+000(-98.259440,26.281840)/-99.1707,31.3915,4/500x400?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full object-cover" alt=""></img>
+        </div>
+      </div>
       {/* footer */}
       <footer className="px-4 md:px-8 lg:px-12 py-8 md:py-6 bg-black text-white ">
         <div className="md:h-[50px] font-light text-sm flex flex-row justify-between md:space-y-0">
