@@ -86,7 +86,8 @@ export default function Home({ content }) {
           </Carousel>
       </section>
       {/* 5E contact */}
-      <section className='relative flex flex-col md:flex-row h-800px md:h-[450px]'>
+      <section className='relative flex flex-col md:flex-row'>
+        {/* <div className="absolute inset-0 bg-slate-200 h-full w-full opacity-30"></div> */}
         <div className='absolute top-0 left-0 w-full md:w-[60%] px-4 py-8 md:p-6 lg:p-8 max-w-[700px]'>
           <h3 className='text-xs lg:text-sm uppercase'>{pageContent.contactSubtitle ? pageContent.contactSubtitle : undefined}</h3>
           <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4'>{pageContent.contactTitle}</h2>
@@ -119,8 +120,8 @@ export default function Home({ content }) {
             <button className="bg-black text-white p-3 mt-2 md:mt-4 uppercase">{pageContent.contactButtonText ? pageContent.contactButtonText : "Send it"}</button>
           </div>
         </div>
-        <div className='w-full'>
-          <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-114.145047,31.436473,4/1000x450?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover hidden md:block" alt=""></img>
+        <div className='w-full md:h-[475px]'>
+          <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-114.145047,31.436473,4/1100x450?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover hidden md:block" alt=""></img>
           <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-99.777608,39.203330,4/500x800?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover md:hidden" alt=""></img>
         </div>
       </section>
