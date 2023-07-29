@@ -1,49 +1,38 @@
 import Hero from '@/components/hero';
-// import Nav from '@/components/nav';
 import getContent from '@/utils/getContent'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
   faInstagram,
-  faLinkedinIn,
+  faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
 
 export default function Home({content}) {
   return (
     <main>
-      {/* <Nav content={content} /> */}
+      {/* hero */}
       <Hero content={content} />
-      {/* intro */}
-      <div className='relative flex flex-col-reverse md:flex-row justify-center w-full px-4 py-8 md:p-6 lg:p-8'>
+      {/* 5E about */}
+      <div className='relative flex flex-col-reverse md:flex-row w-full px-4 py-8 md:p-6 lg:p-8'>
         <div className='w-full pt-8 md:pt-0 md:w-1/2'>
           <img src={content[0].fields.otherPics[24].fields.file.url} className=""/>
         </div>
-        <div className='relative w-full md:w-1/2 md:pl-8'>
-          <h4 className='text-xs lg:text-sm font-jakarta'>WHO WE ARE</h4>
-          <h3 className='text-xl md:text-2xl lg:text-3xl font-bold font-jakarta pb-4'>Naturally Better</h3>
-          <p className='text-sm font-jakarta pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
+        <div className='relative w-full md:w-1/2 md:pl-8 max-w-[540px]'>
+          <h3 className='text-xs lg:text-sm uppercase'>Who we are</h3>
+          <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4'>Naturally Better</h2>
+          <p className='pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
           <p className='pb-6'>Located near Guthrie, Texas, the ranch is dedicated to the production of the finest American Quarter Horses and Angus cattle in the country, as well as providing state-of-the-art veterinary and reproductive services.</p>
           <button className="bg-black text-white p-3">LEARN MORE</button>
         </div>
       </div>
-      {/* line break photos */}
-      {/* <div className='relative w-full flex flex-row'>
-        <img src={content[0].fields.otherPics[13].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
-        <img src={content[0].fields.otherPics[15].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
-        <img src={content[0].fields.otherPics[17].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
-        <img src={content[0].fields.otherPics[19].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
-        <img src={content[0].fields.otherPics[17].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
-        <img src={content[0].fields.otherPics[18].fields.file.url} className='h-[16.666667vw] w-1/6 object-cover'/>
-      </div> */}
-      {/* our products */}
+      {/* 5E products */}
       <div className='flex flex-row justify-center p-4 md:p-6 lg:p-8 bg-slate-200'>
         <div className='relative flex flex-col items-center max-w-[1100px]'>
-          {/* <img src='/images/cattle.png' className='h-[200px] w-[300px]'/> */}
-          <div className='h-[250px]'>
+          <div className='h-[200px] md:h-[250px]'>
             <img src={content[0].fields.logos[2].fields.file.url} className='h-full'/>
           </div>
-          <h2 className='text-xl md:text-2xl lg:text-3xl font-extrabold font-jakarta pb-4 text-center'>A historic Texas ranch built on a legacy of people with passion, quarter horses with pedigree and cattle with heritage</h2>
-          <div className="border border-slate-400 w-1/3 m-4"></div>
+          <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4 text-center'>A historic Texas ranch built on a legacy of people with passion, quarter horses with pedigree and cattle with heritage</h2>
+          <div className="border-[2.5px] border-black w-1/3 m-4"></div>
           <p className='p-4'>Located near Guthrie, Texas, the ranch is dedicated to the production of the finest American Quarter Horses and Angus cattle in the country, as well as providing state-of-the-art veterinary and reproductive services.</p>
           <div className='flex flex-row flex-wrap justify-center'>
             {/* card */}
@@ -70,45 +59,40 @@ export default function Home({content}) {
           </div>
         </div>
       </div>
-      <div className='h-[500px]'></div>
-      {/* contact and map */}
-      <div className='relative flex flex-col md:flex-row'>
-        {/* <div className='relative w-full md:w-[55%] px-4 py-8 md:p-6 lg:p-8'>
-          <h4 className='text-xs lg:text-sm font-jakarta'>WHO WE ARE</h4>
-          <h3 className='text-xl md:text-2xl lg:text-3xl font-bold font-jakarta pb-4'>Naturally Better</h3>
-          <p className='text-sm font-jakarta pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
-          <div className='flex flex-col'>
-            <input
-              className="p-2 border rounded"
-              id="name"
-              type="name"
-              name="name"
-              placeholder="your name"
-              required
-            />
-            <input
-              className="mt-2 md:mt-4 p-2 border rounded"
-              id="email"
-              type="email"
-              name="email"
-              placeholder="your e-mail"
-              required
-            />
-            <textarea
-              className="mt-2 md:mt-4 p-2 border rounded"
-              id="message"
-              name="message"
-              placeholder="your message"
-            ></textarea>
+      {/* 5E quality */}
+      <div className="md:h-[450px] lg:h-[500px] w-full flex flex-col md:flex-row px-4 py-8 md:p-6 lg:p-8 items-center">
+        <div className='w-full md:w-1/2 flex justify-center md:justify-end pb-6 md:pr-12 md:pb-0'>
+          <img src={content[0].fields.logos[0].fields.file.url} className='h-[250px] w-[250px] border-[15px] border-black rounded-full flex items-center'/>
+        </div>
+        <div className='w-full md:w-1/2 flex flex-col items-center md:items-start'>
+          <div>
+            <h3 className='text-xs lg:text-sm uppercase'>Who we are</h3>
+            <h2 className='text-xl md:text-2xl lg:text-3xl font-bold'>Pasture Raised</h2>
+            <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4'>Grass Fed and Finished</h2>
+          <ul className='list-disc ml-4'>
+            <li>No added hormones</li>
+            <li>Never given antibiotics</li>
+            <li>Dry Aged 14-21 days</li>
+            <li>5 point inspected by the State of Texas</li>
+            <li>Flash Frozen for freshness</li>
+            <li>No saline or gas filled packaging</li>
+            <li>Single Sourced-only one animal in each batch</li>
+          </ul>
           </div>
-          <div className="flex flex-row justify-end mt-4">
-            <button className="bg-black text-white p-3 mt-2 md:mt-4">LEARN MORE</button>
-          </div>
-        </div> */}
-        <div className='absolute top-0 left-0 w-full md:w-[55%] px-4 py-8 md:p-6 lg:p-8'>
-          <h4 className='text-xs lg:text-sm font-jakarta'>WHO WE ARE</h4>
-          <h3 className='text-xl md:text-2xl lg:text-3xl font-bold font-jakarta pb-4'>Naturally Better</h3>
-          <p className='text-sm font-jakarta pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
+        </div>
+      </div>
+      {/* 5E photos carousel */}
+      <div>
+        <div className='relative md:h-[450px] lg:h-[650px] w-full flex flex-row'>
+            <img src={content[0].fields.otherPics[13].fields.file.url} className='h-full w-full object-cover'/>
+        </div>
+      </div>
+      {/* 5E contact */}
+      <div className='relative flex flex-col md:flex-row h-800px md:h-[450px]'>
+        <div className='absolute top-0 left-0 w-full md:w-[60%] px-4 py-8 md:p-6 lg:p-8 max-w-[700px]'>
+          <h3 className='text-xs lg:text-sm uppercase'>Who we are</h3>
+          <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4'>Naturally Better</h2>
+          <p className='pb-6'>The best option for beef for your family, comes from a fresh locally grown farm. 5E Ranch provides the best in beef and wagyu beef in Texas.</p>
           <div className='flex flex-col'>
             <input
               className="p-2 border rounded"
@@ -137,17 +121,14 @@ export default function Home({content}) {
             <button className="bg-black text-white p-3 mt-2 md:mt-4">LEARN MORE</button>
           </div>
         </div>
-        <div className='w-full h-800px md:h-[450px] border-t-2 border-slate-200 md:border-t-0'>
+        <div className='w-full'>
           <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-114.145047,31.436473,4/1000x450?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover hidden md:block" alt=""></img>
           <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-99.777608,39.203330,4/500x800?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover md:hidden" alt=""></img>
         </div>
-        {/* <div className='w-full md:w-[45%]'>
-          <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-99.1707,31.3915,4/500x400?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover" alt=""></img>
-        </div> */}
       </div>
       {/* footer */}
-      <footer className="px-4 md:px-8 lg:px-12 py-8 md:py-6 bg-black text-white ">
-        <div className="md:h-[50px] font-light text-sm flex flex-row justify-between md:space-y-0">
+      <footer className="px-4 md:px-8 lg:px-12 py-8 md:py-6 bg-black text-white text-xs">
+        <div className="font-light flex flex-row justify-between md:space-y-0">
           {/* follow */}
           <div className="flex flex-col justify-center">
             <h4 className="font-bold uppercase">Follow</h4>
@@ -157,7 +138,7 @@ export default function Home({content}) {
                 aria-label="facebook page link"
               >
                 <FontAwesomeIcon
-                  className="cursor-pointer text-4xl md:text-2xl py-2 pr-6 md:pr-3"
+                  className="cursor-pointer text-4xl md:text-2xl pt-2 pr-6 md:pr-3"
                   icon={faFacebook}
                 />
               </a>
@@ -166,17 +147,17 @@ export default function Home({content}) {
                 aria-label="instagram page link"
               >
                 <FontAwesomeIcon
-                  className="cursor-pointer text-4xl md:text-2xl py-2 pr-6 md:pr-3"
+                  className="cursor-pointer text-4xl md:text-2xl pt-2 pr-6 md:pr-3"
                   icon={faInstagram}
                 />
               </a>
               <a
                 href="/"
-                aria-label="linked in page link"
+                aria-label="tiktok page link"
               >
                 <FontAwesomeIcon
-                  className="cursor-pointer text-4xl md:text-2xl py-2 pr-6 md:pr-3"
-                  icon={faLinkedinIn}
+                  className="cursor-pointer text-4xl md:text-2xl pt-2 pr-6 md:pr-3"
+                  icon={faTiktok}
                 />
               </a>
             </div>
@@ -203,7 +184,7 @@ export default function Home({content}) {
           </div> */}
           {/* logo */}
           <div className="flex flex-col space-y-2 h-full md:pb-0">
-            <img src={content[0].fields.logos[7].fields.file.url} className='max-h-[70px] h-full'/>
+            <img src={content[0].fields.logos[3].fields.file.url} className='h-[70px] md:h-[55px]'/>
           </div>
           {/* add copyright stuff */}
         </div>
