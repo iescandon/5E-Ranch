@@ -10,7 +10,7 @@ export default function Navbar({ content}) {
                 }}>
                     <FontAwesomeIcon
                     className="text-white text-lg lg:text-xl"
-                    icon={faHamburger}
+                    icon={faBars}
                     />
                 </button>
             </div>
