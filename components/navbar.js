@@ -4,7 +4,7 @@ import { faShoppingCart, faHamburger, faBars } from "@fortawesome/free-solid-svg
 export default function Navbar({ content}) {
     return (
         <div className="flex flex-row justify-center p-4 h-1/3 w-full">
-            <div className="w-1/3 flex items-start p-4">
+            <div className="w-1/3 flex items-start py-4 px-2 md:p-4">
             <button className="hover:cursor-pointer" onClick={() => { 
                     alert("clicked!")
                 }}>
@@ -17,7 +17,7 @@ export default function Navbar({ content}) {
             <div className="w-1/3 flex justify-center">
                 <img src={content.heroIcon.fields.file.url}  alt="" className="h-[80px] lg:h-[100px]"/>
             </div>
-            <div className="w-1/3 flex items-start justify-end p-4">
+            <div className="w-1/3 flex items-start justify-end py-4 px-2 md:p-4">
                 <button className="hover:cursor-pointer" onClick={() => { 
                     alert("clicked!")
                 }}>
