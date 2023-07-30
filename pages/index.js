@@ -11,6 +11,7 @@ import Card from '@/components/card';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Link from 'next/link';
+import Form from '@/components/form';
 
 export default function Home({ content }) {
 
@@ -83,9 +84,9 @@ export default function Home({ content }) {
       </section>
       {/* 5E contact */}
       <section className='relative flex flex-col md:flex-row'>
-        {/* <div className="absolute inset-0 bg-slate-200 h-full w-full opacity-30"></div> */}
         <div className='absolute top-0 left-0 w-full md:w-[60%] px-4 py-8 md:p-6 lg:p-8 max-w-[700px]'>
-          <h3 className='text-xs lg:text-sm uppercase'>{content.contactSubtitle ? content.contactSubtitle : undefined}</h3>
+          <Form content={content} />
+          {/* <h3 className='text-xs lg:text-sm uppercase'>{content.contactSubtitle ? content.contactSubtitle : undefined}</h3>
           <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4'>{content.contactTitle}</h2>
           <p className='pb-6'>{content.contactText.content[0].content[0].value}</p>
           <div className='flex flex-col'>
@@ -114,7 +115,7 @@ export default function Home({ content }) {
           </div>
           <div className="flex justify-end mt-4">
             <button className="bg-black text-white p-3 mt-2 md:mt-4 uppercase">{content.contactButtonText ? content.contactButtonText : "Send it"}</button>
-          </div>
+          </div> */}
         </div>
         <div className='w-full h-[625px] md:h-[475px]'>
           <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-114.145047,31.436473,4/1100x450?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover hidden md:block" alt=""></img>
