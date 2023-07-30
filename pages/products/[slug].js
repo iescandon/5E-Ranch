@@ -12,7 +12,7 @@ export const getStaticPaths = async () => {
         content_type: "productContent",
       });
   
-    const paths = content.map(item => {
+    const paths = content?.map(item => {
       return {
         params: { slug: item.fields.slug }
       }

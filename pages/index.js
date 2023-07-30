@@ -179,7 +179,7 @@ export default function Home({ content }) {
           </div> */}
           {/* logo */}
           <div className="flex flex-col space-y-2 h-full md:pb-0">
-            <img src={content.footerIcon.fields.file.url} className='h-[70px]'/>
+            <img src={content.footerIcon.fields.file.url} className='h-[60px]'/>
           </div>
           {/* add copyright stuff */}
         </div>
