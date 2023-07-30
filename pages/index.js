@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import Hero from '@/components/hero';
 import getContent from '@/utils/getContent'
+import Hero from '@/components/hero';
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,48 +10,45 @@ import {
 import Card from '@/components/card';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import Link from 'next/link';
 
 export default function Home({ content }) {
-    const [pageContent, setPageContent] = useState(content[0].fields);
-
-    useEffect(() => {
-      setPageContent(content[0].fields);
-      console.log(pageContent);
-    }, [content]);
 
   return (
     <main>
       {/* hero */}
-      <Hero content={pageContent} />
+      <Hero content={content} />
       {/* 5E about */}
       <section className='relative flex flex-col-reverse md:flex-row w-full px-4 py-8 md:p-6 lg:p-8'>
         <div className='w-full pt-8 md:pt-0 md:w-1/2'>
-          <img src={pageContent.aboutImage.fields.file.url} className=""/>
+          <img src={content.aboutImage.fields.file.url} className=""/>
         </div>
         <div className='relative w-full md:w-1/2 md:pl-8 max-w-[540px]'>
-          <h3 className='text-xs lg:text-sm uppercase'>{pageContent.aboutSubtitle ? pageContent.aboutSubtitle : undefined}</h3>
-          <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4'>{pageContent.aboutTitle}</h2>
+          <h3 className='text-xs lg:text-sm uppercase'>{content.aboutSubtitle ? content.aboutSubtitle : undefined}</h3>
+          <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4'>{content.aboutTitle}</h2>
           <div className="space-y-4 pb-6">
-            {documentToReactComponents(pageContent.aboutText)}
-          </div>          
-          <button className="bg-black text-white p-3 uppercase">{pageContent.aboutButtonText ? pageContent.aboutButtonText : "Learn more"}</button>
+            {documentToReactComponents(content.aboutText)}
+          </div>
+          <Link href="/about">
+            <button className="bg-black text-white p-3 uppercase">{content.aboutButtonText ? content.aboutButtonText : "Learn more"}</button>
+          </Link>
         </div>
       </section>
       {/* 5E products */}
       <section className='flex justify-center p-4 md:p-6 lg:p-8 bg-slate-200'>
         <div className='relative flex flex-col items-center max-w-[1100px]'>
           <div className='h-[200px] md:h-[250px]'>
-            <img src={pageContent.productsIcon.fields.file.url} className='h-full'/>
+            <img src={content.productsIcon.fields.file.url} className='h-full'/>
           </div>
-          <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4 text-center'>{pageContent.productsTitle}</h2>
+          <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4 text-center'>{content.productsTitle}</h2>
           <div className="border-[2.5px] border-black w-1/3 m-4"></div>
-          <p className='p-4'>{pageContent.productsText.content[0].content[0].value}</p>
+          <p className='p-4'>{content.productsText.content[0].content[0].value}</p>
           <div className='flex flex-wrap justify-center'>
           {/* cards */}
             {
-              pageContent.productsCards?.map((card) => {
+              content.productsCards?.map((card) => {
                 return (
-                  <Card card={card} buttonText={pageContent.productsCardsButtonText} key={card.fields.title} />
+                  <Card card={card} buttonText={content.productsCardsButtonText} key={card.fields.title} />
                 )
               })
             }
@@ -62,21 +58,21 @@ export default function Home({ content }) {
       {/* 5E quality */}
       <section className="md:h-[450px] lg:h-[500px] w-full flex flex-col md:flex-row px-4 py-8 md:p-6 lg:p-8 items-center">
         <div className='w-full md:w-1/2 flex justify-center md:justify-end pb-6 md:pr-12 md:pb-0'>
-          <img src={pageContent.infoIcon.fields.file.url} className='h-[250px] w-[250px] border-[15px] border-black rounded-full flex items-center'/>
+          <img src={content.infoIcon.fields.file.url} className='h-[250px] w-[250px] border-[15px] border-black rounded-full flex items-center'/>
         </div>
         <div className='w-full md:w-1/2 flex flex-col items-center md:items-start'>
           <div>
-            <h3 className='text-xs lg:text-sm uppercase'>{pageContent.infoSubtitle ? pageContent.infoSubtitle : undefined}</h3>
-            <h2 className='text-xl md:text-2xl lg:text-3xl font-bold'>{pageContent.infoTitle}</h2>
-            <h2 className='text-xl md:text-2xl lg:text-3xl font-bold'>{pageContent.infoTitle2 ? pageContent.infoTitle2 : undefined}</h2>
-            <div className='pt-4 infoText'>{documentToReactComponents(pageContent.infoText)}</div>
+            <h3 className='text-xs lg:text-sm uppercase'>{content.infoSubtitle ? content.infoSubtitle : undefined}</h3>
+            <h2 className='text-xl md:text-2xl lg:text-3xl font-bold'>{content.infoTitle}</h2>
+            <h2 className='text-xl md:text-2xl lg:text-3xl font-bold'>{content.infoTitle2 ? content.infoTitle2 : undefined}</h2>
+            <div className='pt-4 infoText'>{documentToReactComponents(content.infoText)}</div>
           </div>
         </div>
       </section>
       {/* 5E photos carousel */}
       <section>
           <Carousel swipeable={true}>
-            { pageContent.carouselImages.map((img) => {
+            { content.carouselImages.map((img) => {
               return (
                 <div className="h-full md:h-[500px] lg:h-[700px] w-full" key={`div-${img.fields.title}`}>
                   <img src={img.fields.file.url} className='h-full w-full object-cover object-center'/>
@@ -89,9 +85,9 @@ export default function Home({ content }) {
       <section className='relative flex flex-col md:flex-row'>
         {/* <div className="absolute inset-0 bg-slate-200 h-full w-full opacity-30"></div> */}
         <div className='absolute top-0 left-0 w-full md:w-[60%] px-4 py-8 md:p-6 lg:p-8 max-w-[700px]'>
-          <h3 className='text-xs lg:text-sm uppercase'>{pageContent.contactSubtitle ? pageContent.contactSubtitle : undefined}</h3>
-          <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4'>{pageContent.contactTitle}</h2>
-          <p className='pb-6'>{pageContent.contactText.content[0].content[0].value}</p>
+          <h3 className='text-xs lg:text-sm uppercase'>{content.contactSubtitle ? content.contactSubtitle : undefined}</h3>
+          <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4'>{content.contactTitle}</h2>
+          <p className='pb-6'>{content.contactText.content[0].content[0].value}</p>
           <div className='flex flex-col'>
             <input
               className="p-2 border border-slate-300 rounded"
@@ -110,14 +106,14 @@ export default function Home({ content }) {
               required
             />
             <textarea
-              className="mt-2 md:mt-4 p-2 border border-slate-300 rounded"
+              className="mt-2 md:mt-4 p-2 border border-slate-300 rounded resize-none"
               id="message"
               name="message"
               placeholder="your message"
             ></textarea>
           </div>
           <div className="flex justify-end mt-4">
-            <button className="bg-black text-white p-3 mt-2 md:mt-4 uppercase">{pageContent.contactButtonText ? pageContent.contactButtonText : "Send it"}</button>
+            <button className="bg-black text-white p-3 mt-2 md:mt-4 uppercase">{content.contactButtonText ? content.contactButtonText : "Send it"}</button>
           </div>
         </div>
         <div className='w-full md:h-[475px]'>
@@ -130,10 +126,10 @@ export default function Home({ content }) {
         <div className="font-light flex justify-between md:space-y-0">
           {/* follow */}
           <div className="flex flex-col justify-center">
-            <h4 className="font-bold uppercase">{pageContent.footerTitle ? pageContent.footerTitle : "Follow"}</h4>
+            <h4 className="font-bold uppercase">{content.footerTitle ? content.footerTitle : "Follow"}</h4>
             <div className="flex">
               <a
-                href={pageContent.footerSocialMediaLinks.facebookUrl}
+                href={content.footerSocialMediaLinks.facebookUrl}
                 aria-label="facebook page link"
               >
                 <FontAwesomeIcon
@@ -142,7 +138,7 @@ export default function Home({ content }) {
                 />
               </a>
               <a
-                href={pageContent.footerSocialMediaLinks.instagramUrl}
+                href={content.footerSocialMediaLinks.instagramUrl}
                 aria-label="instagram page link"
               >
                 <FontAwesomeIcon
@@ -151,7 +147,7 @@ export default function Home({ content }) {
                 />
               </a>
               <a
-                href={pageContent.footerSocialMediaLinks.tiktokUrl}
+                href={content.footerSocialMediaLinks.tiktokUrl}
                 aria-label="tiktok page link"
               >
                 <FontAwesomeIcon
@@ -183,7 +179,7 @@ export default function Home({ content }) {
           </div> */}
           {/* logo */}
           <div className="flex flex-col space-y-2 h-full md:pb-0">
-            <img src={pageContent.footerIcon.fields.file.url} className='h-[70px]'/>
+            <img src={content.footerIcon.fields.file.url} className='h-[70px]'/>
           </div>
           {/* add copyright stuff */}
         </div>
@@ -192,8 +188,13 @@ export default function Home({ content }) {
   )
 }
 
-Home.getInitialProps = async () => {
-  const content = await getContent("homePageContent");
-  return { content };
-};
+export const getStaticProps = async () => {
+  const content = await getContent({
+    content_type: "homePageContent",
+  });
 
+  return {
+    props: { content: content[0].fields },
+    revalidate: 1
+  }
+}

@@ -1,19 +1,16 @@
-// src/utils.js
 import { createClient } from 'contentful';
 
 const { CONTENTFUL_SPACE_ID, CONTENTFUL_ACCESS_TOKEN } = process.env;
 
-const getContent = async (type) => {
+const getContent = async (contentObj) => {
   const client = createClient({
     space: CONTENTFUL_SPACE_ID,
     accessToken: CONTENTFUL_ACCESS_TOKEN,
   });
 
-  const response = await client.getEntries({
-    content_type: type,
-  });
+  const res = await client.getEntries(contentObj);
   
-  return response.items;
+  return res.items;
 };
 
 export default getContent;

@@ -1,4 +1,3 @@
-
 export default function Hero({ content }) {
   return (
     <section>
