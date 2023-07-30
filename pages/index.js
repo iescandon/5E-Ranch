@@ -86,36 +86,6 @@ export default function Home({ content }) {
       <section className='relative flex flex-col md:flex-row'>
         <div className='absolute top-0 left-0 w-full md:w-[60%] px-4 py-8 md:p-6 lg:p-8 max-w-[700px]'>
           <Form content={content} />
-          {/* <h3 className='text-xs lg:text-sm uppercase'>{content.contactSubtitle ? content.contactSubtitle : undefined}</h3>
-          <h2 className='text-xl md:text-2xl lg:text-3xl font-bold pb-4'>{content.contactTitle}</h2>
-          <p className='pb-6'>{content.contactText.content[0].content[0].value}</p>
-          <div className='flex flex-col'>
-            <input
-              className="p-2 border border-slate-300 rounded"
-              id="name"
-              type="name"
-              name="name"
-              placeholder="your name"
-              required
-            />
-            <input
-              className="mt-2 md:mt-4 p-2 border border-slate-300 rounded"
-              id="email"
-              type="email"
-              name="email"
-              placeholder="your e-mail"
-              required
-            />
-            <textarea
-              className="mt-2 md:mt-4 p-2 border border-slate-300 rounded resize-none"
-              id="message"
-              name="message"
-              placeholder="your message"
-            ></textarea>
-          </div>
-          <div className="flex justify-end mt-4">
-            <button className="bg-black text-white p-3 mt-2 md:mt-4 uppercase">{content.contactButtonText ? content.contactButtonText : "Send it"}</button>
-          </div> */}
         </div>
         <div className='w-full h-[625px] md:h-[475px]'>
           <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-114.145047,31.436473,4/1100x450?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover hidden md:block" alt=""></img>

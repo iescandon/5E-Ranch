@@ -6,7 +6,7 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Form({ content }) {
+export default function Form({ content }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toastState, setToastState] = useState({
     isError: null,
@@ -106,5 +106,3 @@ function Form({ content }) {
     </form>
   );
 }
-
-export default Form;
