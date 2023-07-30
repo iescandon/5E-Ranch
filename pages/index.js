@@ -116,7 +116,7 @@ export default function Home({ content }) {
             <button className="bg-black text-white p-3 mt-2 md:mt-4 uppercase">{content.contactButtonText ? content.contactButtonText : "Send it"}</button>
           </div>
         </div>
-        <div className='w-full h-[650px] md:h-[475px]'>
+        <div className='w-full h-[625px] md:h-[475px]'>
           <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-114.145047,31.436473,4/1100x450?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover hidden md:block" alt=""></img>
           <img src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-99.777608,39.203330,4/500x800?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`} className="w-full h-full object-cover md:hidden" alt=""></img>
         </div>
