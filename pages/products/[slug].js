@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import getContent from '@/utils/getContent'
 
 export default function Products({ content }) {
+  if (!content) return <p>loading...</p>;
+  const { name, slug } = content.fields;
+
   return (
-    <h1 className="p-16">{content.slug} page coming soon</h1>
+    <h1 className="p-16">{slug} page coming soon</h1>
   );
 }
 
@@ -11,8 +14,8 @@ export const getStaticPaths = async () => {
     const content = await getContent({
         content_type: "productContent",
       });
-  
-    const paths = content?.map(item => {
+
+    const paths = content.map(item => {
       return {
         params: { slug: item.fields.slug }
       }
