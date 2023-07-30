@@ -3,10 +3,9 @@ import getContent from '@/utils/getContent'
 
 export default function Products({ content }) {
   if (!content) return <p>loading...</p>;
-  const { name, slug } = content.fields;
 
   return (
-    <h1 className="p-16">{slug} page coming soon</h1>
+    <h1 className="p-16">{content.slug} page coming soon</h1>
   );
 }
 
