@@ -1,3 +1,5 @@
+import getContent from '@/utils/getContent'
+
 export default function About({ content }) {
     return (
       <section className="p-16">
@@ -6,13 +8,13 @@ export default function About({ content }) {
     )
   }
 
-// export const getStaticProps = async () => {
-//     const content = await getContent({
-//         content_type: "aboutPageContent",
-//     });
+export const getStaticProps = async () => {
+    const content = await getContent({
+        content_type: "aboutPageContent",
+    });
 
-//     return {
-//         props: { content: content[0].fields },
-//         revalidate: 1
-//     }
-// }
+    return {
+        props: { content: content[0].fields },
+        revalidate: 1
+    }
+}

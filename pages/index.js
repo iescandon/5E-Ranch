@@ -1,5 +1,8 @@
-import getContent from '@/utils/getContent'
+import Link from 'next/link';
 import Hero from '@/components/hero';
+import Card from '@/components/card';
+import Form from '@/components/form';
+import getContent from '@/utils/getContent'
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,11 +10,8 @@ import {
   faInstagram,
   faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
-import Card from '@/components/card';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import Link from 'next/link';
-import Form from '@/components/form';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Home({ content }) {
 

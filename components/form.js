@@ -99,7 +99,6 @@ export default function Form({ content }) {
               icon={faCircleCheck}
             />
           )}
-          {"  "}
           <span className="ml-4">{toastState.msg}</span>
         </p>
       )}
