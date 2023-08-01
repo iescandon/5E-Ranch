@@ -10,12 +10,10 @@ export const reducer = (state, action) => {
     switch (action.type) {
       case "SAVE_STORED_CART":
         return {
-          ...state,
           ...action.payload
         };
       case "ADD_ITEM": 
         return {
-          ...state,
           items:[
             ...state.items,
             action.payload
@@ -23,10 +21,9 @@ export const reducer = (state, action) => {
           totalQuantity: state.totalQuantity++
         };
       case "INCREMENT_ITEM_QUANTITY":
-        filteredItems = state.items.filter((item) => item.id !== action.payload.id);
-        item = state.items.find((item) => item.id === action.payload.id);
+        filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
+        item = state.items?.find((item) => item.id === action.payload.id);
         return {
-          ...state,
           items:[
             ...filteredItems,
             {
@@ -37,10 +34,9 @@ export const reducer = (state, action) => {
           totalQuantity: state.totalQuantity++
         };
       case "DECREMENT_ITEM_QUANTITY":
-        filteredItems = state.items.filter((item) => item.id !== action.payload.id);
-        item = state.items.find((item) => item.id === action.payload.id);
+        filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
+        item = state.items?.find((item) => item.id === action.payload.id);
         return {
-          ...state,
           items:[
             ...filteredItems,
             {
@@ -51,16 +47,17 @@ export const reducer = (state, action) => {
           totalQuantity: state.totalQuantity--
         };
       case "REMOVE_ITEM":
-        filteredItems = state.items.filter((item) => item.id !== action.payload.id);
+        filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
         return {
-          ...state,
           items:[
             ...filteredItems
           ],
           totalQuantity: state.totalQuantity--
         };
       case "CLEAR_CART":
-        return initialState;
+        return {
+          ...initialState
+        }
       default:
         return state
     }
