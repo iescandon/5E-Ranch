@@ -1,3 +1,4 @@
+"use client";
 import getContent from '@/utils/getContent'
 import {  useContext } from "react";
 import { CartContext } from "../../contexts/cart"

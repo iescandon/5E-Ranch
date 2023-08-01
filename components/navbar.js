@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "../contexts/cart";

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useReducer, createContext } from "react"
 import { reducer, initialState, saveStoredCart } from "./reducer"
 
