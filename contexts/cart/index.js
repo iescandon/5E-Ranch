@@ -2,7 +2,7 @@
 import { useEffect, useReducer, createContext } from "react"
 import { reducer, initialState, saveStoredCart } from "./reducer"
 
-export const CartContext = createContext()
+export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
