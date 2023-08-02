@@ -18,7 +18,7 @@ export const reducer = (state, action) => {
             ...state.items,
             action.payload
           ],
-          totalQuantity: state.totalQuantity++
+          totalQuantity: state.totalQuantity + 1
         };
       case "INCREMENT_ITEM_QUANTITY":
         filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
@@ -28,10 +28,10 @@ export const reducer = (state, action) => {
             ...filteredItems,
             {
               ...item,
-              quantity: item.quantity++
+              quantity: item.quantity + 1
             }
           ],
-          totalQuantity: state.totalQuantity++
+          totalQuantity: state.totalQuantity + 1
         };
       case "DECREMENT_ITEM_QUANTITY":
         filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
@@ -41,10 +41,10 @@ export const reducer = (state, action) => {
             ...filteredItems,
             {
               ...item,
-              quantity: item.quantity--
+              quantity: item.quantity - 1
             }
           ],
-          totalQuantity: state.totalQuantity--
+          totalQuantity: state.totalQuantity - 1
         };
       case "REMOVE_ITEM":
         filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
@@ -52,7 +52,7 @@ export const reducer = (state, action) => {
           items:[
             ...filteredItems
           ],
-          totalQuantity: state.totalQuantity--
+          totalQuantity: state.totalQuantity - 1
         };
       case "CLEAR_CART":
         return {
