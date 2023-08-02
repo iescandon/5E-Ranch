@@ -1,4 +1,3 @@
-"use client";
 import {  useContext } from "react";
 import { CartContext } from "../contexts/cart";
 import { clearCart } from "@/contexts/cart/reducer";
