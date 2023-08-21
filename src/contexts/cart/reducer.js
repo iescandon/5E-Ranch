@@ -58,12 +58,13 @@ export const reducer = (state, action) => {
         };
       case "REMOVE_ITEM":
         filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
+        item = state.items?.find((item) => item.id === action.payload.id);
         return {
           ...state,
           items:[
             ...filteredItems
           ],
-          totalQuantity: state.totalQuantity - 1
+          totalQuantity: state.totalQuantity - item.quantity
         };
       case "CLEAR_CART":
         return {

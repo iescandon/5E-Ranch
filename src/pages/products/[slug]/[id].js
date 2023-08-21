@@ -1,11 +1,7 @@
 import getContent from "@/utils/getContent";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/contexts/cart";
-import {
-  addToCart,
-  incrementItem,
-  decrementItem,
-} from "@/contexts/cart/reducer";
+import { addToCart } from "@/contexts/cart/reducer";
 import Navbar from "@/components/navbar";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -56,8 +52,6 @@ export default function ProductDetail({ content }) {
           </div>
           <div className="w-full">
             <div className="border w-max">
-              {/* <button className="ml-4 bg-black text-white p-4" onClick={() => dispatch(decrementItem({ id: "1"}))}>-</button>
-          <button className="ml-4 bg-black text-white p-4" onClick={() => dispatch(incrementItem({ id: "1" }))}>+</button> */}
               <button
                 className="p-4"
                 onClick={() => {
@@ -83,7 +77,7 @@ export default function ProductDetail({ content }) {
           </div>
           <div>
             <button
-              className="bg-black text-white p-4 w-full"
+              className="bg-black text-white p-4 w-full uppercase"
               onClick={() =>
                 dispatch(
                   addToCart({

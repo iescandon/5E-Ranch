@@ -7,7 +7,7 @@ export default function ProductCard({ card, data, slug }) {
   const [state, dispatch] = useContext(CartContext);
 
   return (
-    <div className="flex flex-col space-y-3">
+    <div className="flex flex-col space-y-4">
       <Link
         onClick={() => dispatch(setSelectedItem(card))}
         href={`/products/${slug}/${card.fields.title.toLowerCase()}`}
@@ -17,11 +17,13 @@ export default function ProductCard({ card, data, slug }) {
           style={{ backgroundImage: `url(${card.fields.file.url})` }}
         ></div>
       </Link>
-      <div className="flex justify-between align-center">
+      <div>
+      <div className="flex justify-between align-center pb-1">
             <h2 className="text-xl md:text-2xl font-bold">Bruce</h2>
             <h3 className="text-md md:text-lg uppercase">$100</h3>
       </div>
       <div className="">{card.fields.description}</div>
+      </div>
       <button
         className="bg-black text-white p-4 uppercase"
         onClick={() =>
