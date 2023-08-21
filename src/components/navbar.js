@@ -34,7 +34,7 @@ export default function Navbar({ isBlack }) {
                     className={`${isBlack ? "text-black" : "text-white"} text-lg lg:text-xl`}
                     icon={faShoppingCart}
                     />
-                <div className={`absolute -top-1 -right-1 rounded-full bg-red-500 text-white h-3 w-3 text-[9px] font-semibold flex justify-center items-center ${state.totalQuantity ? "block" : "hidden"}`}>{state.totalQuantity}</div>
+                <div className={`absolute -top-1.5 -right-1.5 rounded-full bg-red-500 text-white h-[14px] w-[14px] text-[10px] font-semibold flex justify-center items-center ${state.totalQuantity ? "block" : "hidden"}`}>{state.totalQuantity}</div>
                 </Link>
             </div>
         </div>

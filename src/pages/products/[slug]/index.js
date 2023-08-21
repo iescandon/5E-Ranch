@@ -6,14 +6,18 @@ import ProductCard from '@/components/productCard';
 
 export default function Products({ content }) {
   const [category, setCategory] = useState();
+  const [products, setProducts] = useState();
 
   if (!content) return <p>loading...</p>;
 
   useEffect(()=>{
    if (content) {
     setCategory(content.slug)
+    setProducts(content.productsCards)
    }
   },[content])
+
+console.log(content)
 
   return (
     <>
@@ -24,10 +28,12 @@ export default function Products({ content }) {
       <Link href="/products/cattle"><ul className={`uppercase hover:underline ${category === 'cattle' && 'underline'}`}>Cattle</ul></Link>
       <Link href="/products/merch"><ul className={`uppercase hover:underline ${category === 'merch' && 'underline'}`}>Merch</ul></Link>
     </li> */}
+    { !products ? (
+          <p>Products coming soon.</p>
+        ) : (
       <div className='flex flex-wrap'>
-      {/* cards */}
         {
-          content.productsCards?.map((card) => {
+          products?.map((card) => {
             const product = content.productsData.find((product) => card.fields.title.toLowerCase() === product.name.toLowerCase());
             return (
               <ProductCard card={card} data={product} slug={content.slug} key={card.fields.title} />
@@ -35,6 +41,7 @@ export default function Products({ content }) {
           })
         }
       </div>
+        )}
     </div>
     </>
   );

@@ -25,7 +25,7 @@ export default function Cart() {
         <h2 className="text-xl md:text-2xl lg:text-3xl font-bold pb-1">
           Shopping cart
         </h2>
-        {cartItems?.length === 0 ? (
+        { cartItems?.length === 0 ? (
           <p>You have nothing in your shopping cart.</p>
         ) : (
           state.items.map((item) => {
@@ -38,14 +38,14 @@ export default function Cart() {
                     <div className="border w-max">
                       <button
                         className="p-4"
-                        onClick={() => dispatch(decrementItem({ id: "1" }))}
+                        onClick={() => dispatch(decrementItem({ id: 1 }))}
                       >
                         -
                       </button>
                       <span>{item.quantity}</span>
                       <button
                         className="p-4"
-                        onClick={() => dispatch(incrementItem({ id: "1" }))}
+                        onClick={() => dispatch(incrementItem({ id: 1 }))}
                       >
                         +
                       </button>
@@ -54,7 +54,7 @@ export default function Cart() {
                 </div>
                 <button
                   className=""
-                  onClick={() => dispatch(removeFromCart({ id: "1" }))}
+                  onClick={() => dispatch(removeFromCart({ id: 1 }))}
                 >
                   <FontAwesomeIcon
                     className="text-black text-lg lg:text-xl"

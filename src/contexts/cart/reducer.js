@@ -59,6 +59,9 @@ export const reducer = (state, action) => {
       case "REMOVE_ITEM":
         filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
         item = state.items?.find((item) => item.id === action.payload.id);
+        console.log(action);
+        console.log(state.items);
+        console.log(item);
         return {
           ...state,
           items:[

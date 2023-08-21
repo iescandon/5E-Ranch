@@ -81,7 +81,7 @@ export default function ProductDetail({ content }) {
               onClick={() =>
                 dispatch(
                   addToCart({
-                    id: "1",
+                    id: 1,
                     category: "Cattle",
                     name: "Bruce",
                     quantity,
