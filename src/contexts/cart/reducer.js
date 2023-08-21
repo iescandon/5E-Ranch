@@ -4,26 +4,35 @@ let filteredItems;
 export const initialState = {
   items: [],
   totalQuantity: 0,
+  selectedItem: {},
 }
 
 export const reducer = (state, action) => {
     switch (action.type) {
       case "SAVE_STORED_CART":
         return {
+          ...state,
           ...action.payload
+        };
+      case "SET_SELECTED_ITEM":
+        return {
+          ...state,
+          selectedItem: action.payload,
         };
       case "ADD_ITEM": 
         return {
+          ...state,
           items:[
             ...state.items,
             action.payload
           ],
-          totalQuantity: state.totalQuantity + 1
+          totalQuantity: state.totalQuantity + action.payload.quantity
         };
       case "INCREMENT_ITEM_QUANTITY":
         filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
         item = state.items?.find((item) => item.id === action.payload.id);
         return {
+          ...state,
           items:[
             ...filteredItems,
             {
@@ -37,6 +46,7 @@ export const reducer = (state, action) => {
         filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
         item = state.items?.find((item) => item.id === action.payload.id);
         return {
+          ...state,
           items:[
             ...filteredItems,
             {
@@ -49,6 +59,7 @@ export const reducer = (state, action) => {
       case "REMOVE_ITEM":
         filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
         return {
+          ...state,
           items:[
             ...filteredItems
           ],
@@ -65,6 +76,11 @@ export const reducer = (state, action) => {
 
 export const saveStoredCart = (payload) => ({
   type: "SAVE_STORED_CART",
+  payload
+});
+
+export const setSelectedItem = (payload) => ({
+  type: "SET_SELECTED_ITEM",
   payload
 });
 

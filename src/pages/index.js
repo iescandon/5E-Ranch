@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import styles from "../styles/Home.module.css";
 
 export default function Home({ content }) {
 
@@ -155,6 +156,11 @@ export default function Home({ content }) {
           {/* add copyright stuff */}
         </div>
       </footer>
+      <style jsx global>{`
+      .carousel .thumbs-wrapper, .carousel-status {
+        display: none !important;
+      }
+    `}</style>
     </main>
   )
 }

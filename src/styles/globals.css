@@ -25,15 +25,26 @@ body {
   @apply list-disc ml-4 space-y-2;
 }
 
+/* .carousel {
+  @apply !w-max;
+}
+
 .carousel .thumb {
   height: 80px;
 }
 
-.carousel .thumbs-wrapper,
 .carousel-status {
   display: none;
 }
 
-.slider-wrapper {
+.carousel .thumbs-wrapper {
+  @apply !w-max !m-0 pr-4;
+} */
+
+/* .carousel .thumbs-wrapper, .carousel-status {
+  display: none;
+} */
+
+/* .slider-wrapper {
   height: inherit;
-}
+} */
