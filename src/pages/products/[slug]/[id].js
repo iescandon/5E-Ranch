@@ -12,15 +12,18 @@ export default function ProductDetail({ content }) {
   const [item, setItem] = useState(undefined);
   const [quantity, setQuantity] = useState(1);
 
-  if (!content && state.selectedItem.fields) return <p>loading...</p>;
+  // if (!content && state.selectedItem.fields) return <p>loading...</p>;
 
   useEffect(() => {
-    if (content && state.selectedItem.fields) {
+    // if (content && state.selectedItem.fields) {
+    if (state) {
       setItem(state.selectedItem.fields);
+      // const product = state.items.filter((item) => item.name.toLowerCase() === content.slug)
+      // if (product.length > 0) {
+      //   setQuantity(product[0].quantity)
+      // }
     }
   }, [state]);
-
-  console.log(state);
 
   return (
     <>

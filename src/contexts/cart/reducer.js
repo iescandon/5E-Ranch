@@ -20,6 +20,21 @@ export const reducer = (state, action) => {
           selectedItem: action.payload,
         };
       case "ADD_ITEM": 
+      filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
+      item = state.items?.find((item) => item.id === action.payload.id);
+      if (item) {
+        return {
+          ...state,
+          items:[
+            ...filteredItems,
+            {
+              ...item,
+              quantity: item.quantity + action.payload.quantity
+            }
+          ],
+          totalQuantity: state.totalQuantity + action.payload.quantity
+        };
+      }
         return {
           ...state,
           items:[
@@ -59,9 +74,6 @@ export const reducer = (state, action) => {
       case "REMOVE_ITEM":
         filteredItems = state.items?.filter((item) => item.id !== action.payload.id);
         item = state.items?.find((item) => item.id === action.payload.id);
-        console.log(action);
-        console.log(state.items);
-        console.log(item);
         return {
           ...state,
           items:[
