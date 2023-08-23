@@ -1,37 +1,33 @@
 import { useContext } from "react";
 import { CartContext } from "@/contexts/cart";
-import { addToCart, setSelectedItem } from "@/contexts/cart/reducer";
+import { addToCart } from "@/contexts/cart/reducer";
 import Link from "next/link";
 
-export default function ProductCard({ card, data, slug }) {
+export default function ProductCard({ data, slug }) {
   const [state, dispatch] = useContext(CartContext);
 
   return (
-    <div className="flex flex-col space-y-4">
-      <Link
-        onClick={() => dispatch(setSelectedItem(card))}
-        href={`/products/${slug}/${card.fields.title.toLowerCase()}`}
-      >
-        <div
-          className="w-[300px] h-[300px] shadow-lg bg-cover bg-center"
-          style={{ backgroundImage: `url(${card.fields.file.url})` }}
-        ></div>
+    <div className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] space-y-4">
+      <Link href={`/products/${slug}/${data.id}`}>
+        <img src={data.images[0]} className="object-cover h-full w-full" />
       </Link>
       <div>
-      <div className="flex justify-between align-center pb-1">
-            <h2 className="text-xl md:text-2xl font-bold">Bruce</h2>
-            <h3 className="text-md md:text-lg uppercase">$100</h3>
-      </div>
-      <div className="">{card.fields.description}</div>
+        <div className="flex justify-between align-center pb-1">
+          <h2 className="text-xl md:text-2xl">{data.name}</h2>
+          <h3>${data.price.unit_amount / 100}</h3>
+        </div>
+        <div className="">{data.metadata.short_description}</div>
       </div>
       <button
-        className="bg-black text-white p-4 uppercase"
+        className="bg-black text-white p-4 w-full uppercase"
         onClick={() =>
           dispatch(
             addToCart({
               id: data.id,
-              category: slug,
+              url: `/products/${slug}/${data.id}`,
               name: data.name,
+              price: `$${data.price.unit_amount / 100}`,
+              img: data.images[0],
               quantity: 1,
             })
           )

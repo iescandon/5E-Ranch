@@ -22,13 +22,11 @@ export default function Cart() {
     <>
       <Navbar isBlack={true} />
       <div className="p-10">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold pb-1">
-          Shopping cart
-        </h2>
-        { cartItems?.length === 0 ? (
+        <h2 className="pb-1">Shopping cart</h2>
+        {cartItems?.length === 0 ? (
           <p>You have nothing in your shopping cart.</p>
         ) : (
-          state.items.map((item) => {
+          cartItems?.map((item) => {
             return (
               <div className="flex space-x-10 items-center h-40 border-b border-gray-300">
                 <img src="" />
@@ -38,14 +36,18 @@ export default function Cart() {
                     <div className="border w-max">
                       <button
                         className="p-4"
-                        onClick={() => dispatch(decrementItem({ id: 1 }))}
+                        onClick={() => {
+                          if (item.quantity !== 1) {
+                            dispatch(decrementItem({ id: item.id }));
+                          }
+                        }}
                       >
                         -
                       </button>
                       <span>{item.quantity}</span>
                       <button
                         className="p-4"
-                        onClick={() => dispatch(incrementItem({ id: 1 }))}
+                        onClick={() => dispatch(incrementItem({ id: item.id }))}
                       >
                         +
                       </button>
@@ -54,7 +56,7 @@ export default function Cart() {
                 </div>
                 <button
                   className=""
-                  onClick={() => dispatch(removeFromCart({ id: 1 }))}
+                  onClick={() => dispatch(removeFromCart({ id: item.id }))}
                 >
                   <FontAwesomeIcon
                     className="text-black text-lg lg:text-xl"

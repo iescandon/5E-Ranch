@@ -1,50 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  body {
+    @apply font-jakarta text-sm;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl text-white font-extrabold text-center drop-shadow-md !leading-[1.25];
+  }
+
+  h2 {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold;
+  }
+
+  h3 {
+    @apply text-base lg:text-lg uppercase;
+  }
+
+  h4 {
+    @apply text-xs lg:text-sm uppercase;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .card {
+    background-color: theme("colors.white");
+    border-radius: theme("borderRadius.lg");
+    padding: theme("spacing.6");
+    box-shadow: theme("boxShadow.xl");
   }
-} */
+}
 
-body {
-  @apply font-jakarta text-sm;
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
 }
 
 .infoText ul {
   @apply list-disc ml-4 space-y-2;
 }
-
-/* .carousel {
-  @apply !w-max;
-}
-
-.carousel .thumb {
-  height: 80px;
-}
-
-.carousel-status {
-  display: none;
-}
-
-.carousel .thumbs-wrapper {
-  @apply !w-max !m-0 pr-4;
-} */
-
-/* .carousel .thumbs-wrapper, .carousel-status {
-  display: none;
-} */
-
-/* .slider-wrapper {
-  height: inherit;
-} */
