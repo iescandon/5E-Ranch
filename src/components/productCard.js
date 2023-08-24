@@ -16,7 +16,7 @@ export default function ProductCard({ data, slug }) {
           <h2 className="text-xl md:text-2xl">{data.name}</h2>
           <h3>${data.price.unit_amount / 100}</h3>
         </div>
-        <div className="">{data.metadata.short_description}</div>
+        <div className="">{data.description}</div>
       </div>
       <button
         className="bg-black text-white p-4 w-full uppercase"
@@ -27,6 +27,7 @@ export default function ProductCard({ data, slug }) {
               url: `/products/${slug}/${data.id}`,
               name: data.name,
               price: `$${data.price.unit_amount / 100}`,
+              priceId: data.default_price,
               img: data.images[0],
               quantity: 1,
             })

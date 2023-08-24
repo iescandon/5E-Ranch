@@ -1,6 +1,7 @@
-let item;
+let existingItem;
 let filteredItems;
 let currentItems;
+let item;
 
 export const initialState = {
   items: [],
@@ -15,16 +16,16 @@ export const reducer = (state, action) => {
         ...action.payload,
       };
     case "ADD_ITEM":
-      item = state.items?.find((item) => item.id === action.payload.id);
-      if (item) {
-        const currentItems = state.items?.map((x) => {
-          if (x.id === action.payload.id) {
+      existingItem = state.items?.find((item) => item.id === action.payload.id);
+      if (existingItem) {
+        const currentItems = state.items?.map((item) => {
+          if (item.id === action.payload.id) {
             return {
-              ...x,
-              quantity: x.quantity + action.payload.quantity,
+              ...item,
+              quantity: item.quantity + action.payload.quantity,
             };
           }
-          return x;
+          return item;
         });
         return {
           ...state,

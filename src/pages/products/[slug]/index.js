@@ -2,16 +2,12 @@ import getContent from "@/utils/getContent";
 import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
 import ProductCard from "@/components/productCard";
+import Stripe from "stripe";
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default function Products({ productList, slug }) {
   const [products, setProducts] = useState();
-  //   if (content) {
-  //     setCategory(content.slug);
-  //     setProducts(content.productsCards);
-  //   }
-  // }, [content]);
 
   useEffect(() => {
     if (productList[0] !== undefined) {
@@ -40,16 +36,7 @@ export default function Products({ productList, slug }) {
 }
 
 export const getStaticPaths = async () => {
-  // const content = await getContent({
-  //   content_type: "productsPageContent",
-  // });
-
-  // const paths = content.map((item) => {
-  //   return {
-  //     params: { slug: item.fields.slug },
-  //   };
-  // });
-
+  // FIXME: Figure out how to get this from contentful or maybe state
   const paths = [
     { params: { slug: "cattle" } },
     { params: { slug: "merch" } },

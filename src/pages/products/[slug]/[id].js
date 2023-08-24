@@ -5,8 +5,9 @@ import { addToCart } from "@/contexts/cart/reducer";
 import Navbar from "@/components/navbar";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Stripe from "stripe";
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default function ProductDetail({ productObj, slug }) {
   const [state, dispatch] = useContext(CartContext);
@@ -40,7 +41,7 @@ export default function ProductDetail({ productObj, slug }) {
               <h2 className="pb-1">{product.name}</h2>
               <h3>${product.price.unit_amount / 100}</h3>
             </div>
-            <div>{product.description}</div>
+            <div>{product.metadata.long_description}</div>
             <div className="w-full">
               <div className="border w-max">
                 <button
@@ -76,6 +77,7 @@ export default function ProductDetail({ productObj, slug }) {
                       url: `/products/${slug}/${product.id}`,
                       name: product.name,
                       price: `$${product.price.unit_amount / 100}`,
+                      priceId: product.default_price,
                       img: product.images[0],
                       quantity,
                     })
@@ -120,6 +122,7 @@ export default function ProductDetail({ productObj, slug }) {
 }
 
 export const getStaticPaths = async () => {
+  // export const getStaticPaths = async () => {
   // const content = await getContent({
   //   content_type: "productDetailPageContent",
   // });
@@ -130,11 +133,13 @@ export const getStaticPaths = async () => {
   //   };
   // });
 
-  const products = await stripe.products.list();
+  const products = await stripe.products.search({
+    query: `active:\'true\'`,
+  });
 
   const paths = await products.data.map((product) => {
     return {
-      params: { slug: "cattle", id: product.id },
+      params: { slug: product.metadata.category, id: product.id },
     };
   });
 
@@ -145,6 +150,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
+  // FIXME: Get additional photos from contentful or maybe add them through the api
   // const content = await getContent({
   //   content_type: "productDetailPageContent",
   //   "fields.slug": params.id,
