@@ -30,7 +30,7 @@ export default function Home({ content }) {
             {documentToReactComponents(content.aboutText)}
           </div>
           <Link href="/about">
-            <button className="bg-black text-white p-3 uppercase">
+            <button className="bg-black text-white p-4 uppercase">
               {content.aboutButtonText ? content.aboutButtonText : "Learn more"}
             </button>
           </Link>

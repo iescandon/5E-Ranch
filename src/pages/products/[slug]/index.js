@@ -65,7 +65,6 @@ export const getStaticProps = async ({ params }) => {
             price: {
               currency: price.currency,
               unit_amount: price.unit_amount,
-              unit_amount_decimal: price.unit_amount_decimal,
             },
           });
         }

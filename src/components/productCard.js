@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "@/contexts/cart";
 import { addToCart } from "@/contexts/cart/reducer";
 import Link from "next/link";
+import formatAmountForDisplay from "@/utils/stripeHelpers";
 
 export default function ProductCard({ data, slug }) {
   const [state, dispatch] = useContext(CartContext);
@@ -14,7 +15,12 @@ export default function ProductCard({ data, slug }) {
       <div>
         <div className="flex justify-between align-center pb-1">
           <h2 className="text-xl md:text-2xl">{data.name}</h2>
-          <h3>${data.price.unit_amount / 100}</h3>
+          <h3>
+            {formatAmountForDisplay(
+              data.price.unit_amount,
+              data.price.currency
+            )}
+          </h3>
         </div>
         <div className="">{data.description}</div>
       </div>
@@ -26,7 +32,10 @@ export default function ProductCard({ data, slug }) {
               id: data.id,
               url: `/products/${slug}/${data.id}`,
               name: data.name,
-              price: `$${data.price.unit_amount / 100}`,
+              price: {
+                unit_amount: data.price.unit_amount,
+                currency: data.price.currency,
+              },
               priceId: data.default_price,
               img: data.images[0],
               quantity: 1,

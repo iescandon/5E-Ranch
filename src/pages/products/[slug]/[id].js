@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Stripe from "stripe";
+import formatAmountForDisplay from "@/utils/stripeHelpers";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -39,7 +40,12 @@ export default function ProductDetail({ productObj, slug }) {
           <div className="lg:w-[45%] flex flex-col pt-8 md:p-8 space-y-8">
             <div>
               <h2 className="pb-1">{product.name}</h2>
-              <h3>${product.price.unit_amount / 100}</h3>
+              <h3>
+                {formatAmountForDisplay(
+                  product.price.unit_amount,
+                  product.price.currency
+                )}
+              </h3>
             </div>
             <div>{product.metadata.long_description}</div>
             <div className="w-full">
@@ -76,7 +82,10 @@ export default function ProductDetail({ productObj, slug }) {
                       id: product.id,
                       url: `/products/${slug}/${product.id}`,
                       name: product.name,
-                      price: `$${product.price.unit_amount / 100}`,
+                      price: {
+                        unit_amount: product.price.unit_amount,
+                        currency: product.price.currency,
+                      },
                       priceId: product.default_price,
                       img: product.images[0],
                       quantity,
@@ -122,17 +131,6 @@ export default function ProductDetail({ productObj, slug }) {
 }
 
 export const getStaticPaths = async () => {
-  // export const getStaticPaths = async () => {
-  // const content = await getContent({
-  //   content_type: "productDetailPageContent",
-  // });
-
-  // const paths = content.map((item) => {
-  //   return {
-  //     params: { slug: item.fields.productCategorySlug, id: item.fields.slug },
-  //   };
-  // });
-
   const products = await stripe.products.search({
     query: `active:\'true\'`,
   });
@@ -151,6 +149,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   // FIXME: Get additional photos from contentful or maybe add them through the api
+
   // const content = await getContent({
   //   content_type: "productDetailPageContent",
   //   "fields.slug": params.id,
@@ -173,7 +172,6 @@ export const getStaticProps = async ({ params }) => {
     price: {
       currency: price.currency,
       unit_amount: price.unit_amount,
-      unit_amount_decimal: price.unit_amount_decimal,
     },
   };
 
