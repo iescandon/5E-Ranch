@@ -44,7 +44,10 @@ export default function CartItem({ item }) {
       </div>
       <div className="md:w-[25%] flex justify-end items-center">
         <div className="pr-4 md:pr-12">
-          {formatAmountForDisplay(item.price.unit_amount, item.price.currency)}
+          {formatAmountForDisplay(
+            item.price.unit_amount * item.quantity,
+            item.price.currency
+          )}
         </div>
         <button onClick={() => dispatch(removeFromCart({ id: item.id }))}>
           <FontAwesomeIcon
