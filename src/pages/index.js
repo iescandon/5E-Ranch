@@ -13,7 +13,7 @@ import {
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-export default function Home({ content }) {
+export default function Home({ content, products }) {
   return (
     <main>
       {/* hero */}
@@ -52,13 +52,13 @@ export default function Home({ content }) {
           </p>
           <div className="flex flex-wrap justify-center">
             {/* cards */}
-            {/* FIXME: Better way to get this data from contentful - set in state to be used with products index.ts */}
-            {content.productsCards?.map((card) => {
+            {products.productsCategories?.map((category, i) => {
               return (
                 <Card
-                  card={card}
+                  category={category}
+                  img={products.productsImages[i].fields.file.url}
                   buttonText={content.productsCardsButtonText}
-                  key={card.fields.title}
+                  key={category}
                 />
               );
             })}
@@ -203,8 +203,12 @@ export const getStaticProps = async () => {
     content_type: "homePageContent",
   });
 
+  const products = await getContent({
+    content_type: "productsPageContent",
+  });
+
   return {
-    props: { content: content[0].fields },
+    props: { content: content[0].fields, products: products[0].fields },
     revalidate: 1,
   };
 };

@@ -5,7 +5,9 @@ export default function About({ content }) {
   return (
     <>
       <Navbar isBlack={true} />
-      <section className="p-16">About page coming soon!</section>
+      <div className="flex flex-col items-center">
+        <p>About page coming soon.</p>
+      </div>
     </>
   );
 }

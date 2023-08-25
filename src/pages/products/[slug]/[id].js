@@ -18,6 +18,7 @@ export default function ProductDetail({ productObj, slug }) {
   useEffect(() => {
     if (productObj !== undefined) {
       setProduct(productObj);
+      console.log(productObj.images);
     }
   }, [productObj]);
 
@@ -30,12 +31,13 @@ export default function ProductDetail({ productObj, slug }) {
             swipeable={true}
             className="flex flex-col lg:flex-row-reverse lg:w-[55%]"
           >
-            <div className="h-[300px] md:h-[500px]">
-              <img
-                src={product.images[0]}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            {product?.images?.map((img) => {
+              return (
+                <div className="h-[300px] md:h-[500px]">
+                  <img src={img} className="w-full h-full object-cover" />
+                </div>
+              );
+            })}
           </Carousel>
           <div className="lg:w-[45%] flex flex-col pt-4 lg:p-8 space-y-6 lg:space-y-8">
             <div className="flex w-full justify-between">
@@ -150,6 +152,18 @@ export default function ProductDetail({ productObj, slug }) {
           .carousel .thumbs-wrapper {
             padding-top: 0 !important;
             padding-right: 1rem !important;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .carousel .thumbs-wrapper ul {
+            display: flex;
+            flex-direction: column;
+            transform: none !important;
+          }
+
+          .carousel .thumbs-wrapper ul li.thumb {
+            margin-bottom: 6px;
           }
         }
       `}</style>
@@ -162,6 +176,7 @@ export const getStaticPaths = async () => {
     query: `active:\'true\'`,
   });
 
+  // FIXME: Handle if no paths found or path entered does not match available paths
   const paths = await products.data.map((product) => {
     return {
       params: { slug: product.metadata.category, id: product.id },
@@ -175,12 +190,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  // FIXME: Get additional photos from contentful or maybe add them through the api
-
-  // const content = await getContent({
-  //   content_type: "productDetailPageContent",
-  //   "fields.slug": params.id,
-  // });
+  const content = await getContent({
+    content_type: "productDetailPageContent",
+    "fields.stripeId": params.id,
+  });
 
   // if (!content.length) {
   //   return {
@@ -194,8 +207,15 @@ export const getStaticProps = async ({ params }) => {
   const product = await stripe.products.retrieve(params.id);
   const price = await stripe.prices.retrieve(product.default_price);
 
+  const secondaryImages = !content.length
+    ? []
+    : content[0].fields.secondaryPhotos.map((img) => {
+        return img.fields.file.url;
+      });
+
   const productObj = {
     ...product,
+    images: [...product.images, ...secondaryImages],
     price: {
       currency: price.currency,
       unit_amount: price.unit_amount,

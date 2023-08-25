@@ -36,12 +36,17 @@ export default function Products({ productList, slug }) {
 }
 
 export const getStaticPaths = async () => {
-  // FIXME: Figure out how to get this from contentful or maybe state
-  const paths = [
-    { params: { slug: "cattle" } },
-    { params: { slug: "merch" } },
-    { params: { slug: "beef" } },
-  ];
+  const products = await getContent({
+    content_type: "productsPageContent",
+  });
+
+  const paths = products[0].fields.productsCategories.map((category) => {
+    return {
+      params: { slug: category },
+    };
+  });
+
+  // FIXME: Handle if no paths found or path entered does not match available paths
 
   return {
     paths,
