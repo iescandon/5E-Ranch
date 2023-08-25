@@ -18,7 +18,6 @@ export default function ProductDetail({ productObj, slug }) {
   useEffect(() => {
     if (productObj !== undefined) {
       setProduct(productObj);
-      console.log(productObj.images);
     }
   }, [productObj]);
 

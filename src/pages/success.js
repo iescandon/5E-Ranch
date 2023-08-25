@@ -16,7 +16,9 @@ export default function Success() {
   return (
     <>
       <Navbar isBlack={true} />
-      <section className="p-16">Thank you for your order!</section>
+      <div className="flex flex-col items-center">
+        <p>Thank you for your order!</p>
+      </div>
     </>
   );
 }
