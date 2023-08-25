@@ -55,13 +55,13 @@ export default function Cart() {
             {cartItems?.map((item) => {
               return <CartItem item={item} key={item.id} />;
             })}
-            <div className="flex flex-col items-end border-t">
-              <div className="flex items-center my-8">
+            <div className="flex flex-col md:items-end">
+              <div className="flex items-center my-8 justify-between md:justify-normal">
                 <h4 className="pr-12">Subtotal</h4>
                 <h3 className="font-semibold">{cartTotal}</h3>
               </div>
               <button
-                className="p-4 bg-black text-white uppercase"
+                className="w-full md:w-max p-4 bg-black text-white uppercase"
                 type="submit"
                 onClick={handleCheckout}
                 role="link"

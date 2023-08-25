@@ -8,19 +8,19 @@ export default function ProductCard({ data, slug }) {
   const [state, dispatch] = useContext(CartContext);
 
   return (
-    <div className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] space-y-4">
+    <div className="w-1/2 h-[50vw] md:w-full md:max-w-[350px] md:max-h-[350px] p-2 space-y-4">
       <Link href={`/products/${slug}/${data.id}`}>
         <img src={data.images[0]} className="object-cover h-full w-full" />
       </Link>
       <div>
-        <div className="flex justify-between align-center pb-1">
-          <h2 className="text-xl md:text-2xl">{data.name}</h2>
-          <h3>
+        <div className="flex justify-between items-center pb-1">
+          <h2 className="text-lg md:text-2xl">{data.name}</h2>
+          <p className="text-xs md:text-sm">
             {formatAmountForDisplay(
               data.price.unit_amount,
               data.price.currency
             )}
-          </h3>
+          </p>
         </div>
         <div className="">{data.description}</div>
       </div>

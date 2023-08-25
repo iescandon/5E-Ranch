@@ -25,7 +25,7 @@ export default function ProductDetail({ productObj, slug }) {
     <>
       <Navbar isBlack={true} />
       {product ? (
-        <div className="flex flex-col lg:flex-row pt-2 pb-10 px-10">
+        <div className="flex flex-col lg:flex-row pt-2 pb-20 px-10">
           <Carousel
             swipeable={true}
             className="flex flex-col lg:flex-row-reverse lg:w-[55%]"
@@ -38,17 +38,44 @@ export default function ProductDetail({ productObj, slug }) {
             </div>
           </Carousel>
           <div className="lg:w-[45%] flex flex-col pt-4 lg:p-8 space-y-6 lg:space-y-8">
-            <div>
-              <h2 className="pb-1">{product.name}</h2>
-              <h3>
-                {formatAmountForDisplay(
-                  product.price.unit_amount,
-                  product.price.currency
-                )}
-              </h3>
+            <div className="flex w-full justify-between">
+              <div className="flex flex-col">
+                <h2 className="pb-1">{product.name}</h2>
+                <h3>
+                  {formatAmountForDisplay(
+                    product.price.unit_amount,
+                    product.price.currency
+                  )}
+                </h3>
+              </div>
+              <div className="lg:hidden">
+                <div className="border w-max">
+                  <button
+                    className="p-4"
+                    onClick={() => {
+                      if (quantity !== 1) {
+                        const newQuantity = quantity - 1;
+                        setQuantity(newQuantity);
+                      }
+                    }}
+                  >
+                    -
+                  </button>
+                  <span>{quantity}</span>
+                  <button
+                    className="p-4"
+                    onClick={() => {
+                      const newQuantity = quantity + 1;
+                      setQuantity(newQuantity);
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
             </div>
             <div>{product.metadata.long_description}</div>
-            <div className="w-full">
+            <div className="hidden lg:block w-full">
               <div className="border w-max">
                 <button
                   className="p-4"
