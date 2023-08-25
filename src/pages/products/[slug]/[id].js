@@ -37,7 +37,7 @@ export default function ProductDetail({ productObj, slug }) {
               />
             </div>
           </Carousel>
-          <div className="lg:w-[45%] flex flex-col pt-8 md:p-8 space-y-8">
+          <div className="lg:w-[45%] flex flex-col pt-4 lg:p-8 space-y-6 lg:space-y-8">
             <div>
               <h2 className="pb-1">{product.name}</h2>
               <h3>

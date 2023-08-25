@@ -61,7 +61,7 @@ export default function Cart() {
                 <h3 className="font-semibold">{cartTotal}</h3>
               </div>
               <button
-                className="px-4 bg-black text-white uppercase"
+                className="p-4 bg-black text-white uppercase"
                 type="submit"
                 onClick={handleCheckout}
                 role="link"
