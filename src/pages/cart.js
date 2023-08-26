@@ -16,7 +16,6 @@ export default function Cart() {
       state.items.forEach((item) => {
         total = total + item.price.unit_amount * item.quantity;
       });
-      console.log(total);
       const formattedTotal = formatAmountForDisplay(
         total,
         state.items[0].price.currency

@@ -7,9 +7,7 @@ import Navbar from "@/components/navbar";
 export default function Success() {
   const [state, dispatch] = useContext(CartContext);
 
-  // FIXME: Fix this so it clears local storage and state
   useEffect(() => {
-    localStorage.removeItem("cart");
     dispatch(clearCart());
   }, []);
 

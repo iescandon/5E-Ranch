@@ -6,20 +6,23 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // FIXME: Clear cart not working because its pulling local storage cart
-  const cartFromLocalStorage =
+  const cartFromStorage =
     (typeof window !== "undefined" &&
-      JSON.parse(localStorage.getItem("cart"))) ||
+      JSON.parse(sessionStorage.getItem("cart"))) ||
     null;
 
   useEffect(() => {
-    if (cartFromLocalStorage && cartFromLocalStorage.quantity !== 0) {
-      dispatch(saveStoredCart(cartFromLocalStorage));
+    if (cartFromStorage && cartFromStorage.quantity !== 0) {
+      if (window.location.href == `${window.location.origin}/success`) {
+        sessionStorage.removeItem("cart");
+      } else {
+        dispatch(saveStoredCart(cartFromStorage));
+      }
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(state));
+    sessionStorage.setItem("cart", JSON.stringify(state));
   }, [state]);
 
   return (

@@ -37,7 +37,6 @@ export default function Form({ content }) {
       data: new FormData(form),
     })
       .then((r) => {
-        console.log(r);
         handleServerResponse(false, "Submission successful!", form);
       })
       .catch((r) => {
