@@ -18,7 +18,6 @@ const cors = Cors({
 });
 
 const webhookHandler = async (req, res) => {
-  console.log("in webhook handler");
   if (req.method === "POST") {
     const buf = await buffer(req);
     const signature = req.headers["stripe-signature"];
