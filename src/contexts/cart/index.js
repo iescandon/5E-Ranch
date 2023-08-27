@@ -13,7 +13,8 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     if (cartFromStorage && cartFromStorage.quantity !== 0) {
-      if (window.location.href == `${window.location.origin}/success`) {
+      const url = window.location.href;
+      if (url.includes("/success")) {
         sessionStorage.removeItem("cart");
       } else {
         dispatch(saveStoredCart(cartFromStorage));
