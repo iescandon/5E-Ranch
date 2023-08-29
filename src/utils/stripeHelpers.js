@@ -1,4 +1,4 @@
-const formatAmountForDisplay = (amount, currency) => {
+export const formatAmountForDisplay = (amount, currency) => {
   let numberFormat = new Intl.NumberFormat(["en-US"], {
     style: "currency",
     currency: currency,
@@ -7,4 +7,12 @@ const formatAmountForDisplay = (amount, currency) => {
   return numberFormat.format(amount / 100);
 };
 
-export default formatAmountForDisplay;
+export const formatTime = (utcSeconds) => {
+  let date = new Date(0);
+  date.setUTCSeconds(utcSeconds);
+  const year = date.getFullYear().toString().slice(-2);
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const formattedDate = `${month}/${day}/${year}`;
+  return formattedDate;
+};

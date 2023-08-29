@@ -8,7 +8,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import formatAmountForDisplay from "@/utils/stripeHelpers";
+import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 
 export default function CartItem({ item }) {
   const [state, dispatch] = useContext(CartContext);

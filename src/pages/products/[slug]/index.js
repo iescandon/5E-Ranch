@@ -2,9 +2,7 @@ import getContent from "@/utils/getContent";
 import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
 import ProductCard from "@/components/productCard";
-import Stripe from "stripe";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+import { getProducts, getPrices } from "@/utils/getStripe";
 
 export default function Products({ productList, slug }) {
   const [products, setProducts] = useState();
@@ -55,15 +53,15 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const products = await stripe.products.search({
-    query: `active:\'true\' AND metadata[\'category\']:\'${params.slug}\'`,
-  });
-  const prices = await stripe.prices.list();
+  const products = await getProducts(
+    `active:\'true\' AND metadata[\'category\']:\'${params.slug}\'`
+  );
+  const prices = await getPrices();
 
   let productList = [];
-  if (products) {
-    products.data.map((product) => {
-      prices.data.map((price) => {
+  if (products && prices) {
+    await products.data.map(async (product) => {
+      await prices.data.map((price) => {
         if (product.default_price === price.id) {
           productList.push({
             ...product,

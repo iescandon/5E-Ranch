@@ -1,13 +1,21 @@
 import { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { CartContext } from "../contexts/cart";
 import Navbar from "@/components/navbar";
 import CartItem from "@/components/cartItem";
-import formatAmountForDisplay from "@/utils/stripeHelpers";
+import { formatAmountForDisplay } from "@/utils/stripeHelpers";
+import { getSession, expireSession } from "@/utils/getStripe";
 
 export default function Cart() {
   const [state, dispatch] = useContext(CartContext);
   const [cartItems, setCartItems] = useState();
   const [cartTotal, setCartTotal] = useState();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/cart", undefined, { shallow: true });
+  }, []);
 
   useEffect(() => {
     setCartItems(state.items);
@@ -74,3 +82,16 @@ export default function Cart() {
     </>
   );
 }
+
+export const getServerSideProps = async ({ query }) => {
+  if (query.session_id) {
+    const session = await getSession(query.session_id);
+    if (session.status === "open") {
+      await expireSession(query.session_id);
+    }
+  }
+
+  return {
+    props: {},
+  };
+};

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "@/contexts/cart";
 import { addToCart } from "@/contexts/cart/reducer";
 import Link from "next/link";
-import formatAmountForDisplay from "@/utils/stripeHelpers";
+import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 
 export default function ProductCard({ data, slug }) {
   const [state, dispatch] = useContext(CartContext);

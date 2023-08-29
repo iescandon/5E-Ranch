@@ -5,10 +5,8 @@ import { addToCart } from "@/contexts/cart/reducer";
 import Navbar from "@/components/navbar";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Stripe from "stripe";
-import formatAmountForDisplay from "@/utils/stripeHelpers";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+import { formatAmountForDisplay } from "@/utils/stripeHelpers";
+import { getPrice, getProduct, getProducts } from "@/utils/getStripe";
 
 export default function ProductDetail({ productObj, slug }) {
   const [state, dispatch] = useContext(CartContext);
@@ -171,9 +169,7 @@ export default function ProductDetail({ productObj, slug }) {
 }
 
 export const getStaticPaths = async () => {
-  const products = await stripe.products.search({
-    query: `active:\'true\'`,
-  });
+  const products = await getProducts(`active:\'true\'`);
 
   // FIXME: Handle if no paths found or path entered does not match available paths
   const paths = await products.data.map((product) => {
@@ -203,8 +199,8 @@ export const getStaticProps = async ({ params }) => {
   //   };
   // }
 
-  const product = await stripe.products.retrieve(params.id);
-  const price = await stripe.prices.retrieve(product.default_price);
+  const product = await getProduct(params.id);
+  const price = await getPrice(product.default_price);
 
   const secondaryImages = !content.length
     ? []
