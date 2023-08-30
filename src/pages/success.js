@@ -49,12 +49,20 @@ export default function Success({ session }) {
                 </p>
                 <div className="flex flex-col">
                   {coords && (
-                    <img
-                      src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(${coords})/${coords},16/1100x500?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
-                      className="w-full h-full object-cover pt-4 md:max-h-[300px] lg:max-h-[350px]"
-                      // className="w-full h-full object-cover pt-4"
-                      alt=""
-                    ></img>
+                    <>
+                      <img
+                        src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(${coords})/${coords},16/800x400?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
+                        className="w-full h-full object-cover pt-4 md:max-h-[300px] lg:max-h-[350px] hidden md:block"
+                        // className="w-full h-full object-cover pt-4"
+                        alt=""
+                      ></img>
+                      <img
+                        src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(${coords})/${coords},16/450x300?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
+                        className="w-full h-full object-cover pt-4 md:max-h-[300px] lg:max-h-[350px] md:hidden"
+                        // className="w-full h-full object-cover pt-4"
+                        alt=""
+                      ></img>
+                    </>
                   )}
                   <div className="flex flex-col md:flex-row pt-4">
                     <div className="flex space-x-12 md:space-x-20">
