@@ -10,9 +10,13 @@ export default async function handler(req, res) {
         success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/cart?session_id={CHECKOUT_SESSION_ID}`,
         automatic_tax: { enabled: true },
+        phone_number_collection: { enabled: true },
+        billing_address_collection: "required",
+        shipping_address_collection: {
+          allowed_countries: ["US", "CA", "MX"],
+        },
         expires_at: date_obj + 1800,
         invoice_creation: { enabled: true },
-        phone_number_collection: { enabled: true },
       });
       res.status(201).json({ url: session.url });
     } catch (err) {
