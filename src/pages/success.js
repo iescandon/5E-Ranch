@@ -31,7 +31,7 @@ export default function Success({ session }) {
   return (
     <>
       <Navbar isBlack={true} />
-      <div className="flex px-10">
+      <div className="flex px-6 md:px-10">
         <div className="flex flex-col lg:flex-row w-full">
           {orderInfo && orderInfo?.id && (
             <>

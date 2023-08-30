@@ -20,7 +20,7 @@ export default function Products({ productList, slug }) {
         {!products ? (
           <p>Products coming soon.</p>
         ) : (
-          <div className="flex flex-wrap justify-center md:space-x-4 p-2">
+          <div className="flex flex-wrap justify-center md:space-x-4 px-2">
             {products?.map((product) => {
               return (
                 <ProductCard data={product} slug={slug} key={product.id} />

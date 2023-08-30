@@ -53,7 +53,7 @@ export default function Cart() {
   return (
     <>
       <Navbar isBlack={true} />
-      <div className="p-6 md:p-10">
+      <div className="px-6 md:px-10">
         <h2 className="pb-1">Shopping cart</h2>
         {cartItems?.length === 0 ? (
           <p>You have nothing in your shopping cart.</p>
