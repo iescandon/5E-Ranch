@@ -81,7 +81,7 @@ export default function Form({ content }) {
           className="bg-black text-white p-3 mt-2 md:mt-4 uppercase"
           disabled={isSubmitting}
         >
-          {content.contactButtonText ? content.contactButtonText : "Send it"}
+          {content.contactButtonText ? content.contactButtonText : "Submit"}
         </button>
       </div>
       {toastState.msg && (
