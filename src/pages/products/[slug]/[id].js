@@ -24,19 +24,15 @@ export default function ProductDetail({ productObj, slug }) {
       <Navbar isBlack={true} />
       {product ? (
         <div className="flex flex-col lg:flex-row pt-2 pb-20 px-10">
-          <Carousel
-            swipeable={true}
-            className="flex flex-col lg:flex-row-reverse lg:w-[55%]"
-          >
-            {product?.images?.map((img) => {
-              return (
-                <div className="h-[300px] md:h-[500px]">
-                  <img src={img} className="w-full h-full object-cover" />
-                </div>
-              );
-            })}
-          </Carousel>
-          <div className="lg:w-[45%] flex flex-col pt-4 lg:p-8 space-y-6 lg:space-y-8">
+          {/* product image */}
+          <div className="flex flex-col lg:w-1/2 lg:flex-row-reverse h-[300px] md:h-[500px] ">
+            <img
+              src={product.images[0]}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          {/* product detail */}
+          <div className="flex flex-col lg:w-1/2 pt-4 lg:p-8 space-y-6 lg:space-y-8">
             <div className="flex w-full justify-between">
               <div className="flex flex-col">
                 <h2 className="pb-1">{product.name}</h2>
@@ -125,45 +121,6 @@ export default function ProductDetail({ productObj, slug }) {
           </div>
         </div>
       ) : null}
-      <style jsx global>{`
-        .carousel .thumb {
-          height: 80px !important;
-        }
-
-        .carousel-status,
-        .control-dots {
-          display: none !important;
-        }
-
-        .carousel .thumbs-wrapper {
-          width: max-content !important;
-          margin: 0px !important;
-          padding-top: 1rem !important;
-        }
-
-        @media (min-width: 1024px) {
-          .carousel {
-            width: max-content !important;
-          }
-
-          .carousel .thumbs-wrapper {
-            padding-top: 0 !important;
-            padding-right: 1rem !important;
-            display: flex;
-            flex-direction: column;
-          }
-
-          .carousel .thumbs-wrapper ul {
-            display: flex;
-            flex-direction: column;
-            transform: none !important;
-          }
-
-          .carousel .thumbs-wrapper ul li.thumb {
-            margin-bottom: 6px;
-          }
-        }
-      `}</style>
     </>
   );
 }
@@ -185,12 +142,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const content = await getContent({
-    content_type: "productDetailPageContent",
-    "fields.stripeId": params.id,
-  });
+  const product = await getProduct(params.id);
+  const price = await getPrice(product.default_price);
 
-  // if (!content.length) {
+  // if (!product.id) {
   //   return {
   //     redirect: {
   //       destination: "/",
@@ -199,18 +154,8 @@ export const getStaticProps = async ({ params }) => {
   //   };
   // }
 
-  const product = await getProduct(params.id);
-  const price = await getPrice(product.default_price);
-
-  const secondaryImages = !content.length
-    ? []
-    : content[0].fields.secondaryPhotos.map((img) => {
-        return img.fields.file.url;
-      });
-
   const productObj = {
     ...product,
-    images: [...product.images, ...secondaryImages],
     price: {
       currency: price.currency,
       unit_amount: price.unit_amount,

@@ -2,14 +2,6 @@ import Stripe from "stripe";
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-export const getSession = async (session_id) =>
-  await stripe.checkout.sessions.retrieve(session_id, {
-    expand: ["line_items"],
-  });
-
-export const expireSession = async (session_id) =>
-  await stripe.checkout.sessions.expire(session_id);
-
 export const getProducts = async (query) => {
   let products;
   if (query) {
@@ -33,3 +25,11 @@ export const getInvoice = async (invoice_id) =>
 
 export const getCharge = async (payment_id) =>
   await stripe.charges.retrieve(payment_id);
+
+export const getSession = async (session_id) =>
+  await stripe.checkout.sessions.retrieve(session_id, {
+    expand: ["line_items"],
+  });
+
+export const expireSession = async (session_id) =>
+  await stripe.checkout.sessions.expire(session_id);

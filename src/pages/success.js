@@ -20,7 +20,6 @@ export default function Success({ session }) {
     dispatch(clearCart());
     if (session && session.id) {
       setOrderInfo(session);
-      console.log(session);
       if (session.coords) {
         const coordsArray = session.coords.features[0].center;
         setCoords(`${coordsArray[0]},${coordsArray[1]}`);
@@ -36,6 +35,7 @@ export default function Success({ session }) {
           {orderInfo && orderInfo?.id && (
             <>
               <div className="w-full lg:w-[60%] pb-4 lg:pb-0 lg:pr-8">
+                {/* thank you message */}
                 <h4>Order Successful</h4>
                 <h2>
                   Thank you {orderInfo.customer_details.name.split(" ")[0]}!
@@ -47,23 +47,23 @@ export default function Success({ session }) {
                     {orderInfo.customer_details.email}
                   </span>
                 </p>
+                {/* map */}
                 <div className="flex flex-col">
                   {coords && (
                     <>
                       <img
                         src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(${coords})/${coords},16/800x400?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
-                        className="w-full h-full object-cover pt-4 md:max-h-[300px] lg:max-h-[350px] hidden md:block"
-                        // className="w-full h-full object-cover pt-4"
+                        className="w-full h-full object-cover pt-4 md:max-h-[300px] lg:max-h-[350px] hidden md:block z-10"
                         alt=""
-                      ></img>
+                      />
                       <img
                         src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(${coords})/${coords},16/450x300?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
                         className="w-full h-full object-cover pt-4 md:max-h-[300px] lg:max-h-[350px] md:hidden"
-                        // className="w-full h-full object-cover pt-4"
                         alt=""
-                      ></img>
+                      />
                     </>
                   )}
+                  {/* order info */}
                   <div className="flex flex-col md:flex-row pt-4">
                     <div className="flex space-x-12 md:space-x-20">
                       <div>
@@ -96,18 +96,13 @@ export default function Success({ session }) {
                       </div>
                     </div>
                     <div className="pt-4 md:pt-0 md:pl-20">
-                      {/* <p>Order number: {orderInfo.id}</p> */}
+                      {/* <p>
+                        <span className="font-bold">Order number:</span>{" "}
+                      </p> */}
                       <p>
                         <span className="font-bold">Order date:</span>{" "}
                         {formatTime(orderInfo.created)}
                       </p>
-                      {/* <p>
-                        <span className="font-bold">Order total:</span>
-                        {formatAmountForDisplay(
-                          orderInfo.amount_total,
-                          orderInfo.currency
-                        )}
-                      </p> */}
                       <p>
                         <span className="font-bold">Payment method:</span>{" "}
                         <span className="capitalize pr-1">
@@ -122,6 +117,7 @@ export default function Success({ session }) {
                   </div>
                 </div>
               </div>
+              {/* order details */}
               <div className="w-full flex flex-col lg:w-[40%] border-t lg:border-t-0 lg:pl-8 lg:border-l py-5 space-y-6">
                 <h2>Order details</h2>
                 {orderInfo.line_items.data.map((item) => {

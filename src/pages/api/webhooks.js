@@ -4,7 +4,6 @@ import { stripe } from "@/utils/getStripe";
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-// Stripe requires the raw body to construct the event.
 export const config = {
   api: {
     bodyParser: false,
@@ -28,13 +27,11 @@ const webhookHandler = async (req, res) => {
         webhookSecret
       );
     } catch (err) {
-      // On error, log and return the error message.
       console.log(`❌ Error message: ${err.message}`);
       res.status(400).send(`Webhook Error: ${err.message}`);
       return;
     }
 
-    // Successfully constructed event.
     console.log("✅ Success:", event.id);
 
     switch (event.type) {
@@ -61,7 +58,6 @@ const webhookHandler = async (req, res) => {
       }
     }
 
-    // Return a response to acknowledge receipt of the event.
     res.json({ received: true });
   } else {
     res.setHeader("Allow", "POST");

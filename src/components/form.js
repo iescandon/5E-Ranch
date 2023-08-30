@@ -27,7 +27,7 @@ export default function Form({ content }) {
     }, 3000);
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     setIsSubmitting(true);
@@ -42,6 +42,18 @@ export default function Form({ content }) {
       .catch((r) => {
         handleServerResponse(true, r.response.data.error);
       });
+    // try {
+    //   await fetch(process.env.NEXT_PUBLIC_FORMSPREE_URL, {
+    //     method: "POST",
+    //     body: JSON.stringify(new FormData(form)),
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+    //   handleServerResponse(false, "Submission successful!", form);
+    // } catch (err) {
+    //   handleServerResponse(true, r.response.data.error);
+    // }
   };
 
   return (

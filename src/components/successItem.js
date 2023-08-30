@@ -15,7 +15,6 @@ export default function SuccessItem({ item }) {
         </div>
         <p className="pl-10">{item.name}</p>
       </div>
-      {/* maybe multiply by quantity */}
       <p>{formatAmountForDisplay(item.amount, item.currency)}</p>
     </div>
   );
