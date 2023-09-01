@@ -45,21 +45,23 @@ export default function Popover({ isPopoverOpen }) {
         </div>
         {/* last item */}
         {lastItemAdded && lastItemAdded.price && (
-          <div className="flex justify-between items-center">
+          <div className="flex items-center">
             <div className="h-28 w-28 md:h-36 md:w-36">
               <img
                 src={lastItemAdded.img}
                 className="w-full h-full object-cover"
               />
             </div>
-            <p>{lastItemAdded.name}</p>
-            <p>Quantity: {lastItemAdded.quantity}</p>
-            <p>
-              {formatAmountForDisplay(
-                lastItemAdded.price.unit_amount * lastItemAdded.quantity,
-                lastItemAdded.price.currency
-              )}
-            </p>
+            <div className="pl-8 flex flex-col">
+              <p className="text-lg font-bold">{lastItemAdded.name}</p>
+              <p className="pb-[3px]">Quantity: {lastItemAdded.quantity}</p>
+              <p>
+                {formatAmountForDisplay(
+                  lastItemAdded.price.unit_amount * lastItemAdded.quantity,
+                  lastItemAdded.price.currency
+                )}
+              </p>
+            </div>
           </div>
         )}
         {/* buttons */}
