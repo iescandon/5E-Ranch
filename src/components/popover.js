@@ -23,7 +23,7 @@ export default function Popover({ isPopoverOpen }) {
   return (
     <>
       <div
-        className={`absolute top-0 right-0 md:top-16 md:right-8 flex flex-col justify-between bg-white w-screen md:w-[500px] h-[350px] z-20 p-6 visible ${
+        className={`absolute top-0 right-0 md:top-16 md:right-8 flex flex-col justify-between bg-white w-screen h-[300px] md:w-[500px] md:h-[350px] z-20 p-6 visible ${
           !isPopoverOpen && "invisible"
         }`}
       >
@@ -46,7 +46,7 @@ export default function Popover({ isPopoverOpen }) {
         {/* last item */}
         {lastItemAdded && lastItemAdded.price && (
           <div className="flex justify-between items-center">
-            <div className="h-36 w-36">
+            <div className="h-28 w-28 md:h-36 md:w-36">
               <img
                 src={lastItemAdded.img}
                 className="w-full h-full object-cover"

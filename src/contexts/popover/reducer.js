@@ -1,5 +1,5 @@
 export const initialState = {
-  isPopoverOpen: false,
+  isPopoverOpen: true,
 };
 
 export const reducer = (state, action) => {

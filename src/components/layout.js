@@ -11,12 +11,12 @@ export const Layout = ({ children }) => {
 
   useEffect(() => {
     setIsPopoverOpen(state.isPopoverOpen);
-    if (state.isPopoverOpen) {
-      setTimeout(() => {
-        setIsPopoverOpen(!state.isPopoverOpen);
-        dispatch(hidePopover());
-      }, 3500);
-    }
+    // if (state.isPopoverOpen) {
+    //   setTimeout(() => {
+    //     setIsPopoverOpen(!state.isPopoverOpen);
+    //     dispatch(hidePopover());
+    //   }, 3500);
+    // }
   }, [state]);
 
   return (
