@@ -1,13 +1,16 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
-import { PopoverContext } from "@/contexts/popover";
-import { hidePopover } from "@/contexts/popover/reducer";
+import { NotificationsContext } from "@/contexts/notifications";
+import { hidePopover, hideToast } from "@/contexts/notifications/reducer";
 import Popover from "./popover";
+import Menu from "./menu";
 
 export const Layout = ({ children }) => {
-  const [state, dispatch] = useContext(PopoverContext);
+  const [state, dispatch] = useContext(NotificationsContext);
   const [isPopoverOpen, setIsPopoverOpen] = useState();
+  const [isMenuOpen, setIsMenuOpen] = useState();
+  const [isToastOpen, setIsToastOpen] = useState();
 
   useEffect(() => {
     setIsPopoverOpen(state.isPopoverOpen);
@@ -17,7 +20,21 @@ export const Layout = ({ children }) => {
         dispatch(hidePopover());
       }, 3500);
     }
-  }, [state]);
+  }, [state.isPopoverOpen]);
+
+  useEffect(() => {
+    setIsMenuOpen(state.isMenuOpen);
+  }, [state.isMenuOpen]);
+
+  useEffect(() => {
+    setIsToastOpen(state.isToastOpen);
+    if (state.isToastOpen) {
+      setTimeout(() => {
+        setIsToastOpen(!state.isToastOpen);
+        dispatch(hideToast());
+      }, 3500);
+    }
+  }, [state.isToastOpen]);
 
   return (
     <>
@@ -35,6 +52,8 @@ export const Layout = ({ children }) => {
       <section className="relative">
         <div>{children}</div>
         <Popover isPopoverOpen={isPopoverOpen} />
+        <Menu isMenuOpen={isMenuOpen} />
+        {/* TODO: add toast here */}
       </section>
     </>
   );

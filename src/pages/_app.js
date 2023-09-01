@@ -1,16 +1,16 @@
 import Layout from "@/components/layout";
 import { CartProvider } from "../contexts/cart";
-import { PopoverProvider } from "@/contexts/popover";
+import { NotificationsProvider } from "@/contexts/notifications";
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (
     <CartProvider>
-      <PopoverProvider>
+      <NotificationsProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </PopoverProvider>
+      </NotificationsProvider>
     </CartProvider>
   );
 }

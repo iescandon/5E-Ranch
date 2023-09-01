@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { PopoverContext } from "@/contexts/popover";
-import { hidePopover } from "@/contexts/popover/reducer";
+import { NotificationsContext } from "@/contexts/notifications";
+import { hidePopover } from "@/contexts/notifications/reducer";
 import { useRouter } from "next/navigation";
 
 export default function ViewCartBtn() {
-  const [state, dispatch] = useContext(PopoverContext);
+  const [state, dispatch] = useContext(NotificationsContext);
 
   const router = useRouter();
 

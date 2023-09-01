@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { CartContext } from "@/contexts/cart";
 import { addToCart } from "@/contexts/cart/reducer";
-import { PopoverContext } from "@/contexts/popover";
-import { showPopover } from "@/contexts/popover/reducer";
+import { NotificationsContext } from "@/contexts/notifications";
+import { showPopover } from "@/contexts/notifications/reducer";
 
 export default function AddToCartBtn({ data, slug, quantity }) {
   const [cartState, cartDispatch] = useContext(CartContext);
-  const [popoverState, popoverDispatch] = useContext(PopoverContext);
+  const [popoverState, popoverDispatch] = useContext(NotificationsContext);
 
   return (
     <button

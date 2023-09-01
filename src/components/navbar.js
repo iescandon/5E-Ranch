@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "../contexts/cart";
+import { NotificationsContext } from "@/contexts/notifications";
+import { showMenu } from "@/contexts/notifications/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faBars } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar({ isBlack }) {
-  const [state, dispatch] = useContext(CartContext);
+  const [cartState, cartDispatch] = useContext(CartContext);
+  const [state, dispatch] = useContext(NotificationsContext);
 
   return (
     <div className="flex flex-row justify-center p-4 h-1/3 w-full">
@@ -13,7 +16,7 @@ export default function Navbar({ isBlack }) {
         <button
           className="hover:cursor-pointer"
           onClick={() => {
-            alert("clicked!");
+            dispatch(showMenu());
           }}
         >
           <FontAwesomeIcon
@@ -51,10 +54,10 @@ export default function Navbar({ isBlack }) {
           />
           <div
             className={`absolute -top-1.5 -right-1.5 rounded-full bg-red-500 text-white h-[14px] w-[14px] text-[10px] font-semibold flex justify-center items-center ${
-              state.totalQuantity ? "block" : "hidden"
+              cartState.totalQuantity ? "block" : "hidden"
             }`}
           >
-            {state.totalQuantity}
+            {cartState.totalQuantity}
           </div>
         </Link>
       </div>

@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
-import { PopoverContext } from "@/contexts/popover";
+import { NotificationsContext } from "@/contexts/notifications";
 import { CartContext } from "@/contexts/cart";
-import { hidePopover } from "@/contexts/popover/reducer";
+import { hidePopover } from "@/contexts/notifications/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
@@ -10,7 +10,7 @@ import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 import ViewCartBtn from "./buttons/viewCart";
 
 export default function Popover({ isPopoverOpen }) {
-  const [state, dispatch] = useContext(PopoverContext);
+  const [state, dispatch] = useContext(NotificationsContext);
   const [cartState, cartDispatch] = useContext(CartContext);
   const [cartItems, setCartItems] = useState();
   const [lastItemAdded, setLastItemAdded] = useState();

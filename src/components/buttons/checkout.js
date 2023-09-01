@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { PopoverContext } from "@/contexts/popover";
-import { hidePopover } from "@/contexts/popover/reducer";
+import { NotificationsContext } from "@/contexts/notifications";
+import { hidePopover } from "@/contexts/notifications/reducer";
 
 export default function CheckoutBtn({ cartItems, inPopover }) {
-  const [state, dispatch] = useContext(PopoverContext);
+  const [state, dispatch] = useContext(NotificationsContext);
 
   const handleCheckout = async () => {
     const line_items = cartItems.map((item) => {
