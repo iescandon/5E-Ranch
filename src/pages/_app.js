@@ -1,11 +1,16 @@
+import Layout from "@/components/layout";
 import { CartProvider } from "../contexts/cart";
-import '@/styles/globals.css';
+import { PopoverProvider } from "@/contexts/popover";
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
-
   return (
     <CartProvider>
-      <Component {...pageProps} />
+      <PopoverProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </PopoverProvider>
     </CartProvider>
-  )
+  );
 }

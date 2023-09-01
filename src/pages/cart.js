@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import CartItem from "@/components/cartItem";
 import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 import { getSession, expireSession } from "@/utils/getStripe";
+import CheckoutBtn from "@/components/buttons/checkout";
 
 export default function Cart() {
   const [state, dispatch] = useContext(CartContext);
@@ -32,24 +33,6 @@ export default function Cart() {
     }
   }, [state]);
 
-  const handleCheckout = async () => {
-    const line_items = cartItems.map((item) => {
-      return {
-        price: item.priceId,
-        quantity: item.quantity,
-      };
-    });
-    const res = await fetch("/api/checkout_sessions", {
-      method: "POST",
-      body: JSON.stringify({ line_items }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const session = await res.json();
-    window.location.href = session.url;
-  };
-
   return (
     <>
       <Navbar isBlack={true} />
@@ -67,14 +50,7 @@ export default function Cart() {
                 <h4 className="pr-12">Subtotal</h4>
                 <h3 className="font-semibold">{cartTotal}</h3>
               </div>
-              <button
-                className="w-full md:w-max p-4 bg-black text-white uppercase"
-                type="submit"
-                onClick={handleCheckout}
-                role="link"
-              >
-                Checkout
-              </button>
+              <CheckoutBtn cartItems={cartItems} />
             </div>
           </>
         )}

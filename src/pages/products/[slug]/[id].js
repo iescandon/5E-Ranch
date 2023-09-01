@@ -7,6 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 import { getPrice, getProduct, getProducts } from "@/utils/getStripe";
+import AddToCartBtn from "@/components/buttons/addToCart";
 
 export default function ProductDetail({ productObj, slug }) {
   const [state, dispatch] = useContext(CartContext);
@@ -96,27 +97,7 @@ export default function ProductDetail({ productObj, slug }) {
               </div>
             </div>
             <div>
-              <button
-                className="bg-black text-white p-4 w-full uppercase"
-                onClick={() =>
-                  dispatch(
-                    addToCart({
-                      id: product.id,
-                      url: `/products/${slug}/${product.id}`,
-                      name: product.name,
-                      price: {
-                        unit_amount: product.price.unit_amount,
-                        currency: product.price.currency,
-                      },
-                      priceId: product.default_price,
-                      img: product.images[0],
-                      quantity,
-                    })
-                  )
-                }
-              >
-                add to cart
-              </button>
+              <AddToCartBtn data={product} slug={slug} quantity={quantity} />
             </div>
           </div>
         </div>

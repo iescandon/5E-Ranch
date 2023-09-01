@@ -6,6 +6,7 @@ let item;
 export const initialState = {
   items: [],
   totalQuantity: 0,
+  lastItemAdded: {},
 };
 
 export const reducer = (state, action) => {
@@ -31,12 +32,14 @@ export const reducer = (state, action) => {
           ...state,
           items: currentItems,
           totalQuantity: state.totalQuantity + action.payload.quantity,
+          lastItemAdded: action.payload,
         };
       }
       return {
         ...state,
         items: [...state.items, action.payload],
         totalQuantity: state.totalQuantity + action.payload.quantity,
+        lastItemAdded: action.payload,
       };
     case "INCREMENT_ITEM_QUANTITY":
       currentItems = state.items?.map((item) => {

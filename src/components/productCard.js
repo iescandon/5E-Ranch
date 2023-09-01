@@ -1,12 +1,8 @@
-import { useContext } from "react";
-import { CartContext } from "@/contexts/cart";
-import { addToCart } from "@/contexts/cart/reducer";
 import Link from "next/link";
 import { formatAmountForDisplay } from "@/utils/stripeHelpers";
+import AddToCartBtn from "./buttons/addToCart";
 
 export default function ProductCard({ data, slug }) {
-  const [state, dispatch] = useContext(CartContext);
-
   return (
     <div className="w-1/2 h-[50vw] md:w-full md:max-w-[350px] md:max-h-[350px] p-2 space-y-4">
       <Link href={`/products/${slug}/${data.id}`}>
@@ -24,27 +20,7 @@ export default function ProductCard({ data, slug }) {
         </div>
         <div className="">{data.description}</div>
       </div>
-      <button
-        className="bg-black text-white p-4 w-full uppercase"
-        onClick={() =>
-          dispatch(
-            addToCart({
-              id: data.id,
-              url: `/products/${slug}/${data.id}`,
-              name: data.name,
-              price: {
-                unit_amount: data.price.unit_amount,
-                currency: data.price.currency,
-              },
-              priceId: data.default_price,
-              img: data.images[0],
-              quantity: 1,
-            })
-          )
-        }
-      >
-        add to cart
-      </button>
+      <AddToCartBtn data={data} slug={slug} quantity={1} />
     </div>
   );
 }
