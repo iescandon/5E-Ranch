@@ -5,19 +5,17 @@ import ProductCard from "@/components/productCard";
 import { getProducts, getPrices } from "@/utils/getStripe";
 
 export default function Products({ productList, slug }) {
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    if (productList[0] !== undefined) {
-      setProducts(productList);
-    }
+    setProducts(productList);
   }, [productList]);
 
   return (
     <>
       <Navbar isBlack={true} />
       <div className="flex flex-col items-center">
-        {!products ? (
+        {products.length === 0 ? (
           <p>Products coming soon.</p>
         ) : (
           <div className="flex flex-wrap justify-center md:space-x-4 px-2">

@@ -1,16 +1,11 @@
-import getContent from "@/utils/getContent";
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "@/contexts/cart";
-import { addToCart } from "@/contexts/cart/reducer";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
-import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 import { getPrice, getProduct, getProducts } from "@/utils/getStripe";
 import AddToCartBtn from "@/components/buttons/addToCart";
 
 export default function ProductDetail({ productObj, slug }) {
-  const [state, dispatch] = useContext(CartContext);
   const [product, setProduct] = useState();
   const [quantity, setQuantity] = useState(1);
 

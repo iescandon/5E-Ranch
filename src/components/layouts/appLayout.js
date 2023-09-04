@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { NotificationsContext } from "@/contexts/notifications";
 import { hidePopover, hideToast } from "@/contexts/notifications/reducer";
-import Popover from "./popover";
-import Menu from "./menu";
+import Popover from "../popover";
+import Menu from "../menu";
 
-export const Layout = ({ children }) => {
+export default function AppLayout({ children }) {
   const [state, dispatch] = useContext(NotificationsContext);
   const [isPopoverOpen, setIsPopoverOpen] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState();
@@ -57,6 +57,4 @@ export const Layout = ({ children }) => {
       </section>
     </>
   );
-};
-
-export default Layout;
+}

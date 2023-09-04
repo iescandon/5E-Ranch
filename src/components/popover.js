@@ -8,6 +8,7 @@ import Link from "next/link";
 import CheckoutBtn from "./buttons/checkout";
 import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 import ViewCartBtn from "./buttons/viewCart";
+import NotificationsLayout from "./layouts/notificationsLayout";
 
 export default function Popover({ isPopoverOpen }) {
   const [state, dispatch] = useContext(NotificationsContext);
@@ -21,11 +22,9 @@ export default function Popover({ isPopoverOpen }) {
   }, [cartState]);
 
   return (
-    <>
+    <NotificationsLayout show={isPopoverOpen}>
       <div
-        className={`absolute top-0 right-0 md:top-16 md:right-8 flex flex-col justify-between bg-white w-screen h-[300px] md:w-[500px] md:h-[350px] z-20 p-6 visible ${
-          !isPopoverOpen && "invisible"
-        }`}
+        className={`absolute top-0 right-0 md:top-16 md:right-8 flex flex-col justify-between bg-white w-screen h-[300px] md:w-[500px] md:h-[350px] z-20 p-6`}
       >
         {/* top row */}
         <div className="flex justify-between">
@@ -70,11 +69,6 @@ export default function Popover({ isPopoverOpen }) {
           <CheckoutBtn cartItems={cartItems} inPopover={true} />
         </div>
       </div>
-      <div
-        className={`absolute h-screen w-screen inset-0 bg-black bg-opacity-70 z-10 visible ${
-          !isPopoverOpen && "invisible"
-        }`}
-      ></div>
-    </>
+    </NotificationsLayout>
   );
 }
