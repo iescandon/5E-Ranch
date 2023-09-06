@@ -8,7 +8,7 @@ import { getSession, expireSession } from "@/utils/getStripe";
 import CheckoutBtn from "@/components/buttons/checkout";
 
 export default function Cart() {
-  const [state, dispatch] = useContext(CartContext);
+  const [cartState, cartDispatch] = useContext(CartContext);
   const [cartItems, setCartItems] = useState();
   const [cartTotal, setCartTotal] = useState();
 
@@ -19,19 +19,19 @@ export default function Cart() {
   }, []);
 
   useEffect(() => {
-    setCartItems(state.items);
-    if (state.items.length > 0) {
+    setCartItems(cartState.items);
+    if (cartState.items.length > 0) {
       let total = 0;
-      state.items.forEach((item) => {
+      cartState.items.forEach((item) => {
         total = total + item.price.unit_amount * item.quantity;
       });
       const formattedTotal = formatAmountForDisplay(
         total,
-        state.items[0].price.currency
+        cartState.items[0].price.currency
       );
       setCartTotal(formattedTotal);
     }
-  }, [state]);
+  }, [cartState]);
 
   return (
     <>

@@ -1,6 +1,12 @@
+import { useContext } from "react";
+import { NotificationsContext } from "@/contexts/notifications";
+import { setCurrentPage } from "@/contexts/notifications/reducer";
 import Link from "next/link";
 
 export default function Card({ category, img, buttonText }) {
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
+
   return (
     <div
       className="w-[300px] h-[350px] rounded-lg shadow-lg m-4 bg-cover bg-center"
@@ -10,7 +16,13 @@ export default function Card({ category, img, buttonText }) {
         <h4 className="text-xl font-bold pt-2 text-white pb-2 drop-shadow-md capitalize">
           {category}
         </h4>
-        <Link href={`/products/${category.toLowerCase()}`} className="w-full">
+        <Link
+          href={`/products/${category.toLowerCase()}`}
+          className="w-full"
+          onClick={() => {
+            notificationsDispatch(setCurrentPage(category.toLowerCase()));
+          }}
+        >
           <button className="w-full border-white border-2 text-white p-3 drop-shadow-md bg-black bg-opacity-30 uppercase">
             {buttonText ? buttonText : "Shop now"}
           </button>

@@ -7,34 +7,35 @@ import Popover from "../popover";
 import Menu from "../menu";
 
 export default function AppLayout({ children }) {
-  const [state, dispatch] = useContext(NotificationsContext);
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
   const [isPopoverOpen, setIsPopoverOpen] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState();
   const [isToastOpen, setIsToastOpen] = useState();
 
   useEffect(() => {
-    setIsPopoverOpen(state.isPopoverOpen);
-    if (state.isPopoverOpen) {
+    setIsPopoverOpen(notificationsState.isPopoverOpen);
+    if (notificationsState.isPopoverOpen) {
       setTimeout(() => {
-        setIsPopoverOpen(!state.isPopoverOpen);
-        dispatch(hidePopover());
+        setIsPopoverOpen(!notificationsState.isPopoverOpen);
+        notificationsDispatch(hidePopover());
       }, 3500);
     }
-  }, [state.isPopoverOpen]);
+  }, [notificationsState.isPopoverOpen]);
 
   useEffect(() => {
-    setIsMenuOpen(state.isMenuOpen);
-  }, [state.isMenuOpen]);
+    setIsMenuOpen(notificationsState.isMenuOpen);
+  }, [notificationsState.isMenuOpen]);
 
   useEffect(() => {
-    setIsToastOpen(state.isToastOpen);
-    if (state.isToastOpen) {
+    setIsToastOpen(notificationsState.isToastOpen);
+    if (notificationsState.isToastOpen) {
       setTimeout(() => {
-        setIsToastOpen(!state.isToastOpen);
-        dispatch(hideToast());
+        setIsToastOpen(!notificationsState.isToastOpen);
+        notificationsDispatch(hideToast());
       }, 3500);
     }
-  }, [state.isToastOpen]);
+  }, [notificationsState.isToastOpen]);
 
   return (
     <>

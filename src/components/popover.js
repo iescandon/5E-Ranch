@@ -4,14 +4,14 @@ import { CartContext } from "@/contexts/cart";
 import { hidePopover } from "@/contexts/notifications/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
 import CheckoutBtn from "./buttons/checkout";
 import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 import ViewCartBtn from "./buttons/viewCart";
 import NotificationsLayout from "./layouts/notificationsLayout";
 
 export default function Popover({ isPopoverOpen }) {
-  const [state, dispatch] = useContext(NotificationsContext);
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
   const [cartState, cartDispatch] = useContext(CartContext);
   const [cartItems, setCartItems] = useState();
   const [lastItemAdded, setLastItemAdded] = useState();
@@ -35,7 +35,10 @@ export default function Popover({ isPopoverOpen }) {
             />
             <span className="font-bold">Added to Bag</span>
           </div>
-          <button className="" onClick={() => dispatch(hidePopover())}>
+          <button
+            className=""
+            onClick={() => notificationsDispatch(hidePopover())}
+          >
             <FontAwesomeIcon
               className="text-black text-lg lg:text-xl"
               icon={faXmark}

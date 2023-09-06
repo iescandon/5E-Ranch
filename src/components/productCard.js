@@ -1,11 +1,22 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { NotificationsContext } from "@/contexts/notifications";
+import { setCurrentPage } from "@/contexts/notifications/reducer";
 import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 import AddToCartBtn from "./buttons/addToCart";
 
 export default function ProductCard({ data, slug }) {
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
+
   return (
     <div className="w-1/2 h-[50vw] md:w-full md:max-w-[350px] md:max-h-[350px] p-2 space-y-4">
-      <Link href={`/products/${slug}/${data.id}`}>
+      <Link
+        href={`/products/${slug}/${data.id}`}
+        onClick={() => {
+          notificationsDispatch(setCurrentPage(slug));
+        }}
+      >
         <img src={data.images[0]} className="object-cover h-full w-full" />
       </Link>
       <div>

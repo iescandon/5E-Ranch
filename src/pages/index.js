@@ -3,6 +3,9 @@ import Hero from "@/components/hero";
 import Card from "@/components/card";
 import Form from "@/components/form";
 import getContent from "@/utils/getContent";
+import { useContext } from "react";
+import { NotificationsContext } from "@/contexts/notifications";
+import { setCurrentPage } from "@/contexts/notifications/reducer";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,6 +17,9 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Home({ content, products }) {
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
+
   return (
     <main>
       {/* hero */}
@@ -29,7 +35,12 @@ export default function Home({ content, products }) {
           <div className="space-y-4 pb-6">
             {documentToReactComponents(content.aboutText)}
           </div>
-          <Link href="/about">
+          <Link
+            href="/about"
+            onClick={() => {
+              notificationsDispatch(setCurrentPage("about"));
+            }}
+          >
             <button className="bg-black text-white p-4 uppercase">
               {content.aboutButtonText ? content.aboutButtonText : "Learn more"}
             </button>

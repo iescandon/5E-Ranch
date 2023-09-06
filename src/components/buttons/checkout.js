@@ -3,7 +3,7 @@ import { NotificationsContext } from "@/contexts/notifications";
 import { hidePopover } from "@/contexts/notifications/reducer";
 
 export default function CheckoutBtn({ cartItems, inPopover }) {
-  const [state, dispatch] = useContext(NotificationsContext);
+  const [state, notificationsDispatch] = useContext(NotificationsContext);
 
   const handleCheckout = async () => {
     const line_items = cartItems.map((item) => {
@@ -31,7 +31,7 @@ export default function CheckoutBtn({ cartItems, inPopover }) {
       type="submit"
       onClick={() => {
         handleCheckout();
-        dispatch(hidePopover());
+        notificationsDispatch(hidePopover());
       }}
       role="link"
     >

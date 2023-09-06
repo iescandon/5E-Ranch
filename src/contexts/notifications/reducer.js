@@ -1,6 +1,7 @@
 export const initialState = {
   isPopoverOpen: false,
   isMenuOpen: false,
+  currentPage: "",
   isToastOpen: false,
 };
 
@@ -36,6 +37,11 @@ export const reducer = (state, action) => {
         ...state,
         isToastOpen: false,
       };
+    case "SET_CURRENT_PAGE":
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
     default:
       return state;
   }
@@ -62,4 +68,9 @@ export const showToast = () => ({
 
 export const hideToast = () => ({
   type: "HIDE_TOAST",
+});
+
+export const setCurrentPage = (payload) => ({
+  type: "SET_CURRENT_PAGE",
+  payload,
 });

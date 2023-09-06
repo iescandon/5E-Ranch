@@ -1,4 +1,6 @@
 import { useContext } from "react";
+import { NotificationsContext } from "@/contexts/notifications";
+import { setCurrentPage } from "@/contexts/notifications/reducer";
 import { CartContext } from "@/contexts/cart";
 import {
   incrementItem,
@@ -11,12 +13,19 @@ import Link from "next/link";
 import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 
 export default function CartItem({ item }) {
-  const [state, dispatch] = useContext(CartContext);
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
+  const [cartState, cartDispatch] = useContext(CartContext);
 
   return (
     <div className="flex items-center h-28 md:h-40 w-full justify-between border-b">
       <div className="flex items-center w-1/3 md:w-[55%]">
-        <Link href={item.url} className="">
+        <Link
+          href={item.url}
+          onClick={() => {
+            notificationsDispatch(setCurrentPage(item.category));
+          }}
+        >
           <img
             src={item.img}
             className="h-20 w-20 md:h-28 md:w-28 object-cover"
@@ -31,7 +40,7 @@ export default function CartItem({ item }) {
             className="p-2 md:p-4"
             onClick={() => {
               if (item.quantity !== 1) {
-                dispatch(decrementItem({ id: item.id }));
+                cartDispatch(decrementItem({ id: item.id }));
               }
             }}
           >
@@ -40,7 +49,7 @@ export default function CartItem({ item }) {
           <span>{item.quantity}</span>
           <button
             className="p-2 md:p-4"
-            onClick={() => dispatch(incrementItem({ id: item.id }))}
+            onClick={() => cartDispatch(incrementItem({ id: item.id }))}
           >
             +
           </button>
@@ -53,7 +62,7 @@ export default function CartItem({ item }) {
             item.price.currency
           )}
         </div>
-        <button onClick={() => dispatch(removeFromCart({ id: item.id }))}>
+        <button onClick={() => cartDispatch(removeFromCart({ id: item.id }))}>
           <FontAwesomeIcon
             className="text-black text-lg lg:text-xl"
             icon={faTrash}

@@ -1,34 +1,21 @@
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { NotificationsContext } from "@/contexts/notifications";
-import { hideMenu } from "@/contexts/notifications/reducer";
+import { hideMenu, setCurrentPage } from "@/contexts/notifications/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useRouter } from "next/navigation";
 import NotificationsLayout from "./layouts/notificationsLayout";
-
-const menuBtns = [
-  { label: "Home", url: "/" },
-  { label: "About", url: "/about" },
-  { label: "Beef", url: "/products/beef" },
-  { label: "Cattle", url: "/products/cattle" },
-  { label: "Merch", url: "/products/merch" },
-  { label: "Cart", url: "/cart" },
-];
+// FIXME: Pull this from stripe maybe
+import { menuBtns } from "@/types";
 
 export default function Menu({ isMenuOpen }) {
-  const [state, dispatch] = useContext(NotificationsContext);
-  const [selectedPage, setSelectedPage] = useState();
-
-  const router = useRouter();
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
+  const [selectedTab, setSelectedTab] = useState();
 
   useEffect(() => {
-    menuBtns.forEach((btn) => {
-      const path = window.location.pathname;
-      if (path.includes(btn.url)) {
-        setSelectedPage(btn.label);
-      }
-    });
-  }, []);
+    setSelectedTab(notificationsState.currentPage);
+  }, [notificationsState.currentPage]);
 
   return (
     <NotificationsLayout show={isMenuOpen} notificationType={"menu"}>
@@ -40,7 +27,7 @@ export default function Menu({ isMenuOpen }) {
         } flex flex-col bg-white w-screen md:w-[350px] h-screen z-20 py-8 px-6 md:p-8`}
       >
         <div className="flex">
-          <button onClick={() => dispatch(hideMenu())}>
+          <button onClick={() => notificationsDispatch(hideMenu())}>
             <FontAwesomeIcon
               className="text-black text-lg lg:text-xl"
               icon={faXmark}
@@ -50,19 +37,20 @@ export default function Menu({ isMenuOpen }) {
         <div className="flex flex-col py-4">
           {menuBtns.map((btn) => {
             return (
-              <button
-                className={`text-lg font-bold text-left p-2 hover:bg-slate-100 ${
-                  selectedPage === btn.label && "bg-slate-100"
+              <Link
+                href={btn.url}
+                className={`text-lg font-bold text-left p-2 hover:bg-slate-100 capitalize ${
+                  selectedTab === btn.label && "bg-slate-100"
                 }`}
                 key={btn.label}
                 onClick={() => {
-                  setSelectedPage(btn.label);
-                  dispatch(hideMenu());
-                  router.push(btn.url);
+                  setSelectedTab(btn.label);
+                  notificationsDispatch(setCurrentPage(btn.label));
+                  notificationsDispatch(hideMenu());
                 }}
               >
                 {btn.label}
-              </button>
+              </Link>
             );
           })}
         </div>

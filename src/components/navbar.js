@@ -2,13 +2,14 @@ import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "../contexts/cart";
 import { NotificationsContext } from "@/contexts/notifications";
-import { showMenu } from "@/contexts/notifications/reducer";
+import { showMenu, setCurrentPage } from "@/contexts/notifications/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faBars } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar({ isBlack }) {
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
   const [cartState, cartDispatch] = useContext(CartContext);
-  const [state, dispatch] = useContext(NotificationsContext);
 
   return (
     <div className="flex flex-row justify-center p-4 h-1/3 w-full">
@@ -16,7 +17,7 @@ export default function Navbar({ isBlack }) {
         <button
           className="hover:cursor-pointer"
           onClick={() => {
-            dispatch(showMenu());
+            notificationsDispatch(showMenu());
           }}
         >
           <FontAwesomeIcon
@@ -27,8 +28,13 @@ export default function Navbar({ isBlack }) {
           />
         </button>
       </div>
-      <div className="w-1/3 flex justify-center">
-        <Link href="/">
+      <div className="w-1/3 flex justify-center items-start">
+        <Link
+          href="/"
+          onClick={() => {
+            notificationsDispatch(setCurrentPage("home"));
+          }}
+        >
           {isBlack ? (
             <img
               src="/images/fullLogoBlack.svg"
@@ -45,7 +51,13 @@ export default function Navbar({ isBlack }) {
         </Link>
       </div>
       <div className="w-1/3 flex items-start justify-end py-4 px-2 md:p-4">
-        <Link href="/cart" className="relative">
+        <Link
+          href="/cart"
+          onClick={() => {
+            notificationsDispatch(setCurrentPage("cart"));
+          }}
+          className="relative"
+        >
           <FontAwesomeIcon
             className={`${
               isBlack ? "text-black" : "text-white"

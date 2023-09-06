@@ -5,8 +5,9 @@ import { NotificationsContext } from "@/contexts/notifications";
 import { showPopover } from "@/contexts/notifications/reducer";
 
 export default function AddToCartBtn({ data, slug, quantity }) {
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
   const [cartState, cartDispatch] = useContext(CartContext);
-  const [popoverState, popoverDispatch] = useContext(NotificationsContext);
 
   return (
     <button
@@ -15,6 +16,7 @@ export default function AddToCartBtn({ data, slug, quantity }) {
         cartDispatch(
           addToCart({
             id: data.id,
+            category: slug,
             url: `/products/${slug}/${data.id}`,
             name: data.name,
             price: {
@@ -26,7 +28,7 @@ export default function AddToCartBtn({ data, slug, quantity }) {
             quantity,
           })
         );
-        popoverDispatch(showPopover());
+        notificationsDispatch(showPopover());
       }}
     >
       add to cart
