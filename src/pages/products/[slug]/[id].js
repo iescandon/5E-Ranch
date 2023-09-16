@@ -12,6 +12,7 @@ export default function ProductDetail({ productObj, slug }) {
   useEffect(() => {
     if (productObj !== undefined) {
       setProduct(productObj);
+      console.log(productObj);
     }
   }, [productObj]);
 
@@ -33,10 +34,12 @@ export default function ProductDetail({ productObj, slug }) {
               <div className="flex flex-col">
                 <h2 className="pb-1">{product.name}</h2>
                 <h3>
-                  {formatAmountForDisplay(
-                    product.price.unit_amount,
-                    product.price.currency
-                  )}
+                  {product.price.unit_amount > 0
+                    ? formatAmountForDisplay(
+                        product.price.unit_amount,
+                        product.price.currency
+                      )
+                    : "COMING SOON"}
                 </h3>
               </div>
               <div className="lg:hidden">

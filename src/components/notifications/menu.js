@@ -4,7 +4,7 @@ import { NotificationsContext } from "@/contexts/notifications";
 import { hideMenu, setCurrentPage } from "@/contexts/notifications/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import NotificationsLayout from "./layouts/notificationsLayout";
+import NotificationsLayout from "../layouts/notificationsLayout";
 // FIXME: Pull this from stripe maybe
 import { menuBtns } from "@/types";
 

@@ -23,10 +23,12 @@ export default function ProductCard({ data, slug }) {
         <div className="flex justify-between items-center pb-1">
           <h2 className="text-lg md:text-2xl">{data.name}</h2>
           <p className="text-xs md:text-sm">
-            {formatAmountForDisplay(
-              data.price.unit_amount,
-              data.price.currency
-            )}
+            {data.price.unit_amount > 0
+              ? formatAmountForDisplay(
+                  data.price.unit_amount,
+                  data.price.currency
+                )
+              : "COMING SOON"}
           </p>
         </div>
         <div className="">{data.description}</div>

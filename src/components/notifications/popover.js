@@ -4,10 +4,10 @@ import { CartContext } from "@/contexts/cart";
 import { hidePopover } from "@/contexts/notifications/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
-import CheckoutBtn from "./buttons/checkout";
+import CheckoutBtn from "../buttons/checkout";
 import { formatAmountForDisplay } from "@/utils/stripeHelpers";
-import ViewCartBtn from "./buttons/viewCart";
-import NotificationsLayout from "./layouts/notificationsLayout";
+import ViewCartBtn from "../buttons/viewCart";
+import NotificationsLayout from "../layouts/notificationsLayout";
 
 export default function Popover({ popover }) {
   const [notificationsState, notificationsDispatch] =

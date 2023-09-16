@@ -2,10 +2,9 @@ import Head from "next/head";
 import { useEffect, useState, useContext } from "react";
 import { NotificationsContext } from "@/contexts/notifications";
 import { hidePopover, hideToast } from "@/contexts/notifications/reducer";
-import Popover from "../popover";
-import Menu from "../menu";
-import Toast from "../toast";
-import { faN } from "@fortawesome/free-solid-svg-icons";
+import Popover from "../notifications/popover";
+import Menu from "../notifications/menu";
+import Toast from "../notifications/toast";
 
 export default function AppLayout({ children }) {
   const [notificationsState, notificationsDispatch] =

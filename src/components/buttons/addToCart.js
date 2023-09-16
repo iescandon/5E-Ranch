@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/contexts/cart";
 import { addToCart } from "@/contexts/cart/reducer";
 import { NotificationsContext } from "@/contexts/notifications";
@@ -8,10 +8,20 @@ export default function AddToCartBtn({ data, slug, quantity }) {
   const [notificationsState, notificationsDispatch] =
     useContext(NotificationsContext);
   const [cartState, cartDispatch] = useContext(CartContext);
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  useEffect(() => {
+    if (data.price.unit_amount === 0) {
+      setIsDisabled(true);
+    }
+  }, [data]);
 
   return (
     <button
-      className="w-full bg-black text-white p-4 uppercase"
+      className={`w-full p-4 uppercase ${
+        isDisabled ? "bg-slate-200 text-slate-400" : "bg-black text-white"
+      }`}
+      disabled={isDisabled}
       onClick={() => {
         cartDispatch(
           addToCart({
