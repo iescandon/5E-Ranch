@@ -8,7 +8,7 @@ import NotificationsLayout from "./layouts/notificationsLayout";
 // FIXME: Pull this from stripe maybe
 import { menuBtns } from "@/types";
 
-export default function Menu({ isMenuOpen }) {
+export default function Menu({ menu }) {
   const [notificationsState, notificationsDispatch] =
     useContext(NotificationsContext);
   const [selectedTab, setSelectedTab] = useState();
@@ -18,10 +18,10 @@ export default function Menu({ isMenuOpen }) {
   }, [notificationsState.currentPage]);
 
   return (
-    <NotificationsLayout show={isMenuOpen} notificationType={"menu"}>
+    <NotificationsLayout show={menu.isOpen} notificationType={"menu"}>
       <div
         className={`absolute transition-transform ease-in-out delay-150 duration-300 -top-[500px] left-0 md:top-0 md:-left-[350px] ${
-          isMenuOpen
+          menu.isOpen
             ? "translate-y-[500px] md:translate-y-0 md:translate-x-[350px]"
             : "-translate-y-[500px] md:-translate-y-0 md:-translate-x-[350px]"
         } flex flex-col bg-white w-screen md:w-[350px] h-screen z-20 py-8 px-6 md:p-8`}

@@ -11,7 +11,7 @@ export default function NotificationsLayout({
     useContext(NotificationsContext);
 
   return (
-    <section className={`visible ${!show && "invisible"}`}>
+    <section className={show ? "visible" : "invisible"}>
       {children}
       <div
         onClick={() => {

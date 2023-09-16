@@ -1,30 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { NotificationsContext } from "@/contexts/notifications";
+import { showToast } from "@/contexts/notifications/reducer";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleCheck,
-  faCircleXmark,
-} from "@fortawesome/free-solid-svg-icons";
 
 export default function Form({ content }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toastState, setToastState] = useState({
-    isError: null,
-    msg: null,
-  });
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
 
   const handleServerResponse = (isError, msg, form) => {
     setIsSubmitting(false);
-    setToastState({ isError, msg });
+    notificationsDispatch(showToast({ isError, msg }));
     if (!isError) {
       form.reset();
     }
-    setTimeout(() => {
-      setToastState({
-        isError: null,
-        msg: null,
-      });
-    }, 3000);
   };
 
   const handleOnSubmit = async (e) => {
@@ -42,18 +31,6 @@ export default function Form({ content }) {
       .catch((r) => {
         handleServerResponse(true, r.response.data.error);
       });
-    // try {
-    //   await fetch(process.env.NEXT_PUBLIC_FORMSPREE_URL, {
-    //     method: "POST",
-    //     body: JSON.stringify(new FormData(form)),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    //   handleServerResponse(false, "Submission successful!", form);
-    // } catch (err) {
-    //   handleServerResponse(true, r.response.data.error);
-    // }
   };
 
   return (
@@ -96,20 +73,6 @@ export default function Form({ content }) {
           {content.contactButtonText ? content.contactButtonText : "Submit"}
         </button>
       </div>
-      {toastState.msg && (
-        <p
-          className={`flex flex-row items-center fixed z-50 rounded top-5 right-5 p-4 lg:py-6 bg-white bg-opacity-95 shadow-lg border-l-4 w-[200px] lg:w-[300px] text-black text-center ${
-            toastState.isError ? "border-red-600" : "border-green-600"
-          }`}
-        >
-          {toastState.isError ? (
-            <FontAwesomeIcon className="text-red-600" icon={faCircleXmark} />
-          ) : (
-            <FontAwesomeIcon className="text-green-600" icon={faCircleCheck} />
-          )}
-          <span className="ml-4">{toastState.msg}</span>
-        </p>
-      )}
     </form>
   );
 }

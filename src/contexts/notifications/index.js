@@ -7,6 +7,9 @@ export const NotificationsContext = createContext();
 export const NotificationsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const path =
+    (typeof window !== "undefined" && window.location.pathname) || null;
+
   useEffect(() => {
     menuBtns.forEach((btn) => {
       const path = window.location.pathname;
@@ -14,7 +17,7 @@ export const NotificationsProvider = ({ children }) => {
         dispatch(setCurrentPage(btn.label));
       }
     });
-  }, []);
+  }, [path]);
 
   return (
     <NotificationsContext.Provider value={[state, dispatch]}>

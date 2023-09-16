@@ -4,7 +4,7 @@ import { CartContext } from "../contexts/cart";
 import { NotificationsContext } from "@/contexts/notifications";
 import { showMenu, setCurrentPage } from "@/contexts/notifications/reducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart, faHamburger } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar({ isBlack }) {
   const [notificationsState, notificationsDispatch] =
@@ -24,7 +24,7 @@ export default function Navbar({ isBlack }) {
             className={`${
               isBlack ? "text-black" : "text-white"
             } text-lg lg:text-xl`}
-            icon={faBars}
+            icon={faHamburger}
           />
         </button>
       </div>

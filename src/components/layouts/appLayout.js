@@ -1,41 +1,40 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { NotificationsContext } from "@/contexts/notifications";
 import { hidePopover, hideToast } from "@/contexts/notifications/reducer";
 import Popover from "../popover";
 import Menu from "../menu";
+import Toast from "../toast";
+import { faN } from "@fortawesome/free-solid-svg-icons";
 
 export default function AppLayout({ children }) {
   const [notificationsState, notificationsDispatch] =
     useContext(NotificationsContext);
-  const [isPopoverOpen, setIsPopoverOpen] = useState();
-  const [isMenuOpen, setIsMenuOpen] = useState();
-  const [isToastOpen, setIsToastOpen] = useState();
+  const [popoverState, setPopoverState] = useState();
+  const [menuState, setMenuState] = useState();
+  const [toastState, setToastState] = useState();
 
   useEffect(() => {
-    setIsPopoverOpen(notificationsState.isPopoverOpen);
-    if (notificationsState.isPopoverOpen) {
+    setPopoverState(notificationsState.popover);
+    if (notificationsState.popover.isOpen) {
       setTimeout(() => {
-        setIsPopoverOpen(!notificationsState.isPopoverOpen);
         notificationsDispatch(hidePopover());
       }, 3500);
     }
-  }, [notificationsState.isPopoverOpen]);
+  }, [notificationsState.popover]);
 
   useEffect(() => {
-    setIsMenuOpen(notificationsState.isMenuOpen);
-  }, [notificationsState.isMenuOpen]);
+    setMenuState(notificationsState.menu);
+  }, [notificationsState.menu]);
 
   useEffect(() => {
-    setIsToastOpen(notificationsState.isToastOpen);
-    if (notificationsState.isToastOpen) {
+    setToastState(notificationsState.toast);
+    if (notificationsState.toast.isOpen) {
       setTimeout(() => {
-        setIsToastOpen(!notificationsState.isToastOpen);
         notificationsDispatch(hideToast());
       }, 3500);
     }
-  }, [notificationsState.isToastOpen]);
+  }, [notificationsState.toast]);
 
   return (
     <>
@@ -52,9 +51,9 @@ export default function AppLayout({ children }) {
       </Head>
       <section className="relative">
         <div>{children}</div>
-        <Popover isPopoverOpen={isPopoverOpen} />
-        <Menu isMenuOpen={isMenuOpen} />
-        {/* TODO: add toast here */}
+        {popoverState && <Popover popover={popoverState} />}
+        {menuState && <Menu menu={menuState} />}
+        {toastState && <Toast toast={toastState} />}
       </section>
     </>
   );

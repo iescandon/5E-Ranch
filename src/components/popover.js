@@ -9,7 +9,7 @@ import { formatAmountForDisplay } from "@/utils/stripeHelpers";
 import ViewCartBtn from "./buttons/viewCart";
 import NotificationsLayout from "./layouts/notificationsLayout";
 
-export default function Popover({ isPopoverOpen }) {
+export default function Popover({ popover }) {
   const [notificationsState, notificationsDispatch] =
     useContext(NotificationsContext);
   const [cartState, cartDispatch] = useContext(CartContext);
@@ -22,7 +22,7 @@ export default function Popover({ isPopoverOpen }) {
   }, [cartState]);
 
   return (
-    <NotificationsLayout show={isPopoverOpen}>
+    <NotificationsLayout show={popover.isOpen}>
       <div
         className={`absolute top-0 right-0 md:top-16 md:right-8 flex flex-col justify-between bg-white w-screen h-[300px] md:w-[500px] md:h-[350px] z-20 p-6`}
       >
