@@ -27,7 +27,11 @@ export default function Home({ content, products }) {
       {/* 5E about */}
       <section className="relative flex flex-col-reverse md:flex-row w-full px-4 py-8 md:p-6 lg:p-8">
         <div className="w-full pt-8 md:pt-0 md:w-1/2">
-          <img src={content.aboutImage.fields.file.url} className="" />
+          <img
+            src={content.aboutImage.fields.file.url}
+            className=""
+            alt={content.aboutImage.fields.description}
+          />
         </div>
         <div className="relative w-full md:w-1/2 md:pl-8 max-w-[540px]">
           <h4>{content.aboutSubtitle ? content.aboutSubtitle : undefined}</h4>
@@ -54,6 +58,7 @@ export default function Home({ content, products }) {
             <img
               src={content.productsIcon.fields.file.url}
               className="h-full"
+              alt={content.productsIcon.fields.description}
             />
           </div>
           <h2 className="pb-4 text-center">{content.productsTitle}</h2>
@@ -82,6 +87,7 @@ export default function Home({ content, products }) {
           <img
             src={content.infoIcon.fields.file.url}
             className="h-[250px] w-[250px] border-[15px] border-black rounded-full flex items-center"
+            alt={content.infoIcon.fields.description}
           />
         </div>
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
@@ -107,6 +113,7 @@ export default function Home({ content, products }) {
                 <img
                   src={img.fields.file.url}
                   className="h-full w-full object-cover object-center"
+                  alt={img.fields.description}
                 />
               </div>
             );
@@ -122,12 +129,12 @@ export default function Home({ content, products }) {
           <img
             src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-114.145047,31.436473,4/1100x450?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
             className="w-full h-full object-cover hidden md:block"
-            alt=""
+            alt="map of texas with black marker on McAllen, TX"
           ></img>
           <img
             src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(-98.259440,26.281840)/-99.777608,39.203330,4/500x800?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
             className="w-full h-full object-cover md:hidden"
-            alt=""
+            alt="map of texas with black marker on McAllen, TX"
           ></img>
         </div>
       </section>
@@ -194,6 +201,7 @@ export default function Home({ content, products }) {
             <img
               src={content.footerIcon.fields.file.url}
               className="h-[60px]"
+              alt={content.footerIcon.fields.description}
             />
           </div>
           {/* add copyright stuff */}

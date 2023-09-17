@@ -29,6 +29,7 @@ export default function CartItem({ item }) {
           <img
             src={item.img}
             className="h-20 w-20 md:h-28 md:w-28 object-cover"
+            alt={item.name}
           />
         </Link>
         <div className="hidden md:block pl-4 md:pl-12">{item.name}</div>

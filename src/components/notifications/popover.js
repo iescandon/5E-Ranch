@@ -52,6 +52,7 @@ export default function Popover({ popover }) {
               <img
                 src={lastItemAdded.img}
                 className="w-full h-full object-cover"
+                alt={lastItemAdded.name}
               />
             </div>
             <div className="pl-8 flex flex-col">

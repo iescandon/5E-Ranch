@@ -38,14 +38,14 @@ export default function Navbar({ isBlack }) {
           {isBlack ? (
             <img
               src="/images/fullLogoBlack.svg"
-              alt=""
               className="h-[80px] lg:h-[100px]"
+              alt="5E Ranch logo in black"
             />
           ) : (
             <img
               src="/images/fullLogoWhite.svg"
-              alt=""
               className="h-[80px] lg:h-[100px]"
+              alt="5E Ranch logo in white"
             />
           )}
         </Link>

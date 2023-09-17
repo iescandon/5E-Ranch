@@ -17,7 +17,11 @@ export default function ProductCard({ data, slug }) {
           notificationsDispatch(setCurrentPage(slug));
         }}
       >
-        <img src={data.images[0]} className="object-cover h-full w-full" />
+        <img
+          src={data.images[0]}
+          className="object-cover h-full w-full"
+          alt={`${data.name}, ${data.description}`}
+        />
       </Link>
       <div>
         <div className="flex justify-between items-center pb-1">

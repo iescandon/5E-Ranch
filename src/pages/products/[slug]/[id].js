@@ -12,7 +12,6 @@ export default function ProductDetail({ productObj, slug }) {
   useEffect(() => {
     if (productObj !== undefined) {
       setProduct(productObj);
-      console.log(productObj);
     }
   }, [productObj]);
 
@@ -26,6 +25,7 @@ export default function ProductDetail({ productObj, slug }) {
             <img
               src={product.images[0]}
               className="w-full h-full object-cover"
+              alt={`${product.name}, ${product.description}`}
             />
           </div>
           {/* product detail */}
