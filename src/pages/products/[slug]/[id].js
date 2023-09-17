@@ -23,7 +23,11 @@ export default function ProductDetail({ productObj, slug }) {
           {/* product image */}
           <div className="flex flex-col lg:w-1/2 lg:flex-row-reverse h-[300px] md:h-[500px] ">
             <img
-              src={product.images[0]}
+              src={
+                product.images[0]
+                  ? product.images[0]
+                  : "/images/placeholder.png"
+              }
               className="w-full h-full object-cover"
               alt={`${product.name}, ${product.description}`}
             />
@@ -32,7 +36,7 @@ export default function ProductDetail({ productObj, slug }) {
           <div className="flex flex-col lg:w-1/2 pt-4 lg:p-8 space-y-6 lg:space-y-8">
             <div className="flex w-full justify-between">
               <div className="flex flex-col">
-                <h2 className="pb-1">{product.name}</h2>
+                <h2 className="pb-1 capitalize">{product.name}</h2>
                 <h3>
                   {product.price.unit_amount > 0
                     ? formatAmountForDisplay(
@@ -68,7 +72,11 @@ export default function ProductDetail({ productObj, slug }) {
                 </div>
               </div>
             </div>
-            <div>{product.metadata.long_description}</div>
+            <div>
+              {product.metadata.long_description
+                ? product.metadata.long_description
+                : ""}
+            </div>
             <div className="hidden lg:block w-full">
               <div className="border w-max">
                 <button
@@ -107,7 +115,6 @@ export default function ProductDetail({ productObj, slug }) {
 export const getStaticPaths = async () => {
   const products = await getProducts(`active:\'true\'`);
 
-  // FIXME: Handle if no paths found or path entered does not match available paths
   const paths = await products.data.map((product) => {
     return {
       params: { slug: product.metadata.category, id: product.id },
@@ -116,22 +123,13 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
 export const getStaticProps = async ({ params }) => {
   const product = await getProduct(params.id);
   const price = await getPrice(product.default_price);
-
-  // if (!product.id) {
-  //   return {
-  //     redirect: {
-  //       destination: "/",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
 
   const productObj = {
     ...product,

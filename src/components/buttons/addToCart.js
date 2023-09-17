@@ -19,7 +19,7 @@ export default function AddToCartBtn({ data, slug, quantity }) {
   return (
     <button
       className={`w-full p-4 uppercase ${
-        isDisabled ? "bg-slate-200 text-slate-400" : "bg-black text-white"
+        isDisabled ? "bg-slate-700 text-slate-400" : "bg-black text-white"
       }`}
       disabled={isDisabled}
       onClick={() => {

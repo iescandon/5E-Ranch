@@ -42,11 +42,9 @@ export const getStaticPaths = async () => {
     };
   });
 
-  // FIXME: Handle if no paths found or path entered does not match available paths
-
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
@@ -54,6 +52,7 @@ export const getStaticProps = async ({ params }) => {
   const products = await getProducts(
     `active:\'true\' AND metadata[\'category\']:\'${params.slug}\'`
   );
+
   const prices = await getPrices();
 
   let productList = [];

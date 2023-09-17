@@ -18,14 +18,14 @@ export default function ProductCard({ data, slug }) {
         }}
       >
         <img
-          src={data.images[0]}
+          src={data.images[0] ? data.images[0] : "/images/placeholder.png"}
           className="object-cover h-full w-full"
           alt={`${data.name}, ${data.description}`}
         />
       </Link>
       <div>
         <div className="flex justify-between items-center pb-1">
-          <h2 className="text-lg md:text-2xl">{data.name}</h2>
+          <h2 className="text-lg md:text-2xl capitalize">{data.name}</h2>
           <p className="text-xs md:text-sm">
             {data.price.unit_amount > 0
               ? formatAmountForDisplay(
@@ -35,7 +35,7 @@ export default function ProductCard({ data, slug }) {
               : "COMING SOON"}
           </p>
         </div>
-        <div className="">{data.description}</div>
+        <div className="">{data.description ? data.description : ""}</div>
       </div>
       <AddToCartBtn data={data} slug={slug} quantity={1} />
     </div>
