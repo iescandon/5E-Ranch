@@ -28,7 +28,7 @@ export default function Menu({ menu }) {
       >
         <div className="flex">
           <button
-            id="close-menu"
+            id="close-menu-btn"
             onClick={() => {
               notificationsDispatch(hideMenu());
               document
@@ -63,7 +63,7 @@ export default function Menu({ menu }) {
                   if (e.key === "Tab" && menuBtns.length === i + 1) {
                     e.preventDefault();
                     document
-                      .getElementById("close-menu")
+                      .getElementById("close-menu-btn")
                       .focus({ focusVisible: true });
                   }
                 }}

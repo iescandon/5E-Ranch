@@ -17,6 +17,11 @@ export default function AppLayout({ children }) {
     setPopoverState(notificationsState.popover);
     if (notificationsState.popover.isOpen) {
       setTimeout(() => {
+        document
+          .getElementById("close-popover-btn")
+          .focus({ focusVisible: true });
+      }, [10]);
+      setTimeout(() => {
         notificationsDispatch(hidePopover());
       }, 3500);
     }

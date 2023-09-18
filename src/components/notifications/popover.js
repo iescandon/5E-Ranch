@@ -36,6 +36,7 @@ export default function Popover({ popover }) {
             <span className="font-bold">Added to Bag</span>
           </div>
           <button
+            id="close-popover-btn"
             className=""
             onClick={() => notificationsDispatch(hidePopover())}
           >

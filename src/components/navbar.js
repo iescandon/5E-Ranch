@@ -21,7 +21,7 @@ export default function Navbar({ isBlack }) {
             notificationsDispatch(showMenu());
             setTimeout(() => {
               document
-                .getElementById("close-menu")
+                .getElementById("close-menu-btn")
                 .focus({ focusVisible: true });
             }, [400]);
           }}
