@@ -27,7 +27,15 @@ export default function Menu({ menu }) {
         } flex flex-col bg-white w-screen md:w-[350px] h-screen z-20 py-8 px-6 md:p-8`}
       >
         <div className="flex">
-          <button onClick={() => notificationsDispatch(hideMenu())}>
+          <button
+            id="close-menu"
+            onClick={() => {
+              notificationsDispatch(hideMenu());
+              document
+                .getElementById("hamburger-menu")
+                .focus({ focusVisible: true });
+            }}
+          >
             <FontAwesomeIcon
               className="text-black text-lg lg:text-xl"
               icon={faXmark}
@@ -35,7 +43,7 @@ export default function Menu({ menu }) {
           </button>
         </div>
         <div className="flex flex-col py-4">
-          {menuBtns.map((btn) => {
+          {menuBtns.map((btn, i) => {
             return (
               <Link
                 href={btn.url}
@@ -47,6 +55,17 @@ export default function Menu({ menu }) {
                   setSelectedTab(btn.label);
                   notificationsDispatch(setCurrentPage(btn.label));
                   notificationsDispatch(hideMenu());
+                  document
+                    .getElementById("hamburger-menu")
+                    .focus({ focusVisible: true });
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Tab" && menuBtns.length === i + 1) {
+                    e.preventDefault();
+                    document
+                      .getElementById("close-menu")
+                      .focus({ focusVisible: true });
+                  }
                 }}
               >
                 {btn.label}

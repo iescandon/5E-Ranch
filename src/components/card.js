@@ -18,14 +18,12 @@ export default function Card({ category, img, buttonText }) {
         </h4>
         <Link
           href={`/products/${category.toLowerCase()}`}
-          className="w-full"
+          className="w-full border-white border-2 text-white p-3 drop-shadow-md bg-black bg-opacity-30 uppercase text-center"
           onClick={() => {
             notificationsDispatch(setCurrentPage(category.toLowerCase()));
           }}
         >
-          <button className="w-full border-white border-2 text-white p-3 drop-shadow-md bg-black bg-opacity-30 uppercase">
-            {buttonText ? buttonText : "Shop now"}
-          </button>
+          {buttonText ? buttonText : "Shop now"}
         </Link>
       </div>
     </div>

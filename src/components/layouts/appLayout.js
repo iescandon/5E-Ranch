@@ -49,10 +49,10 @@ export default function AppLayout({ children }) {
         />
       </Head>
       <section className="relative">
-        <div>{children}</div>
         {popoverState && <Popover popover={popoverState} />}
         {menuState && <Menu menu={menuState} />}
         {toastState && <Toast toast={toastState} />}
+        <div>{children}</div>
       </section>
     </>
   );

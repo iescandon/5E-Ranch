@@ -15,9 +15,15 @@ export default function Navbar({ isBlack }) {
     <div className="flex flex-row justify-center p-4 h-1/3 w-full">
       <div className="w-1/3 flex items-start py-4 px-2 md:p-4">
         <button
+          id="hamburger-menu"
           className="hover:cursor-pointer"
           onClick={() => {
             notificationsDispatch(showMenu());
+            setTimeout(() => {
+              document
+                .getElementById("close-menu")
+                .focus({ focusVisible: true });
+            }, [400]);
           }}
         >
           <FontAwesomeIcon

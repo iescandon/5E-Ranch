@@ -3,7 +3,7 @@ import Hero from "@/components/hero";
 import Card from "@/components/card";
 import Form from "@/components/form";
 import getContent from "@/utils/getContent";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NotificationsContext } from "@/contexts/notifications";
 import { setCurrentPage } from "@/contexts/notifications/reducer";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -19,6 +19,13 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 export default function Home({ content, products }) {
   const [notificationsState, notificationsDispatch] =
     useContext(NotificationsContext);
+
+  useEffect(() => {
+    const arrows = document.querySelectorAll(".control-arrow");
+    arrows.forEach((arrow) => {
+      arrow.setAttribute("tabIndex", "-1");
+    });
+  }, []);
 
   return (
     <main>
@@ -44,10 +51,9 @@ export default function Home({ content, products }) {
             onClick={() => {
               notificationsDispatch(setCurrentPage("about"));
             }}
+            className="bg-black text-white p-4 uppercase"
           >
-            <button className="bg-black text-white p-4 uppercase">
-              {content.aboutButtonText ? content.aboutButtonText : "Learn more"}
-            </button>
+            {content.aboutButtonText ? content.aboutButtonText : "Learn more"}
           </Link>
         </div>
       </section>
@@ -150,27 +156,30 @@ export default function Home({ content, products }) {
               <a
                 href={content.footerSocialMediaLinks.facebookUrl}
                 aria-label="facebook page link"
+                className="mt-2 mr-6 md:mr-3"
               >
                 <FontAwesomeIcon
-                  className="cursor-pointer text-4xl md:text-2xl pt-2 pr-6 md:pr-3"
+                  className="cursor-pointer text-4xl md:text-2xl"
                   icon={faFacebook}
                 />
               </a>
               <a
                 href={content.footerSocialMediaLinks.instagramUrl}
                 aria-label="instagram page link"
+                className="mt-2 mr-6 md:mr-3"
               >
                 <FontAwesomeIcon
-                  className="cursor-pointer text-4xl md:text-2xl pt-2 pr-6 md:pr-3"
+                  className="cursor-pointer text-4xl md:text-2xl"
                   icon={faInstagram}
                 />
               </a>
               <a
                 href={content.footerSocialMediaLinks.tiktokUrl}
                 aria-label="tiktok page link"
+                className="mt-2 mr-6 md:mr-3"
               >
                 <FontAwesomeIcon
-                  className="cursor-pointer text-4xl md:text-2xl pt-2 pr-6 md:pr-3"
+                  className="cursor-pointer text-4xl md:text-2xl"
                   icon={faTiktok}
                 />
               </a>
@@ -210,7 +219,7 @@ export default function Home({ content, products }) {
       <style jsx global>{`
         .carousel .thumbs-wrapper,
         .carousel-status {
-          display: none !important;
+          display: none;
         }
       `}</style>
     </main>
@@ -231,3 +240,5 @@ export const getStaticProps = async () => {
     revalidate: 1,
   };
 };
+
+// .carousel.carousel-slider button.control-arrow
