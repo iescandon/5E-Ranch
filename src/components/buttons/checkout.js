@@ -3,7 +3,8 @@ import { NotificationsContext } from "@/contexts/notifications";
 import { hidePopover } from "@/contexts/notifications/reducer";
 
 export default function CheckoutBtn({ cartItems, inPopover }) {
-  const [state, notificationsDispatch] = useContext(NotificationsContext);
+  const [notificationsState, notificationsDispatch] =
+    useContext(NotificationsContext);
 
   const handleCheckout = async () => {
     const line_items = cartItems.map((item) => {
@@ -32,6 +33,14 @@ export default function CheckoutBtn({ cartItems, inPopover }) {
       onClick={() => {
         handleCheckout();
         notificationsDispatch(hidePopover());
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Tab" && inPopover) {
+          e.preventDefault();
+          document
+            .getElementById("close-popover-btn")
+            .focus({ focusVisible: true });
+        }
       }}
       role="link"
     >
