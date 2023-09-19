@@ -46,15 +46,17 @@ export default function Home({ content, products }) {
           <div className="space-y-4 pb-6">
             {documentToReactComponents(content.aboutText)}
           </div>
-          <Link
-            href="/about"
-            onClick={() => {
-              notificationsDispatch(setCurrentPage("about"));
-            }}
-            className="bg-black text-white p-4 uppercase"
-          >
-            {content.aboutButtonText ? content.aboutButtonText : "Learn more"}
-          </Link>
+          <div className="bg-black text-white p-4 w-max">
+            <Link
+              href="/about"
+              onClick={() => {
+                notificationsDispatch(setCurrentPage("about"));
+              }}
+              className="uppercase"
+            >
+              {content.aboutButtonText ? content.aboutButtonText : "Learn more"}
+            </Link>
+          </div>
         </div>
       </section>
       {/* 5E products */}
