@@ -10,7 +10,7 @@ export default function ProductCard({ data, slug }) {
     useContext(NotificationsContext);
 
   return (
-    <div className="w-full h-[50vw] md:w-full md:max-w-[350px] md:max-h-[350px] p-2 space-y-4">
+    <div className="w-1/2 h-[50vw] md:w-full md:max-w-[350px] md:max-h-[350px] p-2 space-y-4">
       <Link
         href={`/products/${slug}/${data.id}`}
         onClick={() => {
