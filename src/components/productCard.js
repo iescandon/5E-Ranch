@@ -31,11 +31,7 @@ export default function ProductCard({ data, slug }) {
         <div className="flex justify-between items-center pb-1">
           <h2 className="text-lg md:text-2xl capitalize">{data.name}</h2>
           {data.price.unit_amount > 0 && (
-            <p
-              className={`text-xs md:text-sm ${
-                data.price.unit_amount === 0 && "text-slate-400"
-              }`}
-            >
+            <p className="text-xs md:text-sm">
               {formatAmountForDisplay(
                 data.price.unit_amount,
                 data.price.currency

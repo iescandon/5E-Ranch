@@ -52,12 +52,12 @@ export default function Success({ session }) {
                   {coords && (
                     <>
                       <img
-                        src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(${coords})/${coords},16/800x400?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
+                        src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(${coords})/${coords},4/800x400?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
                         className="w-full h-full object-cover pt-4 md:max-h-[300px] lg:max-h-[350px] hidden md:block z-10"
                         alt={`map of ${orderInfo.shipping_details.address.line1}`}
                       />
                       <img
-                        src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(${coords})/${coords},16/450x300?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
+                        src={`https://api.mapbox.com/styles/v1/iescandon/clkn0f2yo009301ql1px22n78/static/pin-s+000(${coords})/${coords},4/450x300?access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`}
                         className="w-full h-full object-cover pt-4 md:max-h-[300px] lg:max-h-[350px] md:hidden"
                         alt={`map of ${orderInfo.shipping_details.address.line1}`}
                       />

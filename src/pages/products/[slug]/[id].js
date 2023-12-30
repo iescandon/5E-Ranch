@@ -35,14 +35,10 @@ export default function ProductDetail({ productObj, slug }) {
           {/* product detail */}
           <div className="flex flex-col lg:w-1/2 pt-4 lg:p-8 space-y-6 lg:space-y-8">
             <div className="flex w-full justify-between">
-              <div className="flex flex-col">
-                <h2 className="pb-1 capitalize">{product.name}</h2>
+              <div className="flex flex-col justify-center">
+                <h2 className="capitalize">{product.name}</h2>
                 {product.price.unit_amount > 0 && (
-                  <h3
-                    className={
-                      product.price.unit_amount === 0 && "text-slate-400"
-                    }
-                  >
+                  <h3 className="md:pt-1">
                     {formatAmountForDisplay(
                       product.price.unit_amount,
                       product.price.currency
