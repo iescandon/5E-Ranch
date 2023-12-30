@@ -78,11 +78,7 @@ export default function Menu({ menu }) {
                   </Link>
                 ) : (
                   <p
-                    className={`${
-                      btn.subMenu ? "pl-4 font-normal" : "font-bold"
-                    } text-lg font-bold text-left p-2 hover:bg-slate-100 capitalize ${
-                      selectedTab === btn.label && "bg-slate-100"
-                    }`}
+                    className="text-lg font-bold text-left p-2 capitalize"
                     key={btn.label}
                   >
                     {btn.label}

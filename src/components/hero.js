@@ -4,7 +4,7 @@ export default function Hero({ content }) {
   return (
     <section>
       <div
-        className="h-[600px] md:h-[550px] lg:h-[650px] bg-cover bg-center"
+        className="h-[500px] md:h-[550px] lg:h-[650px] bg-cover bg-center"
         style={{ backgroundImage: `url(${content.heroImage.fields.file.url})` }}
       >
         <div className="bg-gradient-to-b from-transparent to-black from-30% flex flex-col items-center h-full w-full">
