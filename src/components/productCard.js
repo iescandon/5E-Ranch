@@ -18,7 +18,11 @@ export default function ProductCard({ data, slug }) {
         }}
       >
         <img
-          src={data.images[0] ? data.images[0] : "/images/placeholder.png"}
+          src={
+            data.images[0]
+              ? data.images[0]
+              : "/images/landscape-placeholder.svg"
+          }
           className="object-cover h-full w-full"
           alt={`${data.name}, ${data.description}`}
         />
@@ -26,14 +30,18 @@ export default function ProductCard({ data, slug }) {
       <div>
         <div className="flex justify-between items-center pb-1">
           <h2 className="text-lg md:text-2xl capitalize">{data.name}</h2>
-          <p className="text-xs md:text-sm">
-            {data.price.unit_amount > 0
-              ? formatAmountForDisplay(
-                  data.price.unit_amount,
-                  data.price.currency
-                )
-              : "COMING SOON"}
-          </p>
+          {data.price.unit_amount > 0 && (
+            <p
+              className={`text-xs md:text-sm ${
+                data.price.unit_amount === 0 && "text-slate-400"
+              }`}
+            >
+              {formatAmountForDisplay(
+                data.price.unit_amount,
+                data.price.currency
+              )}
+            </p>
+          )}
         </div>
         <div className="">{data.description ? data.description : ""}</div>
       </div>

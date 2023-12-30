@@ -26,7 +26,7 @@ export default function ProductDetail({ productObj, slug }) {
               src={
                 product.images[0]
                   ? product.images[0]
-                  : "/images/placeholder.png"
+                  : "/images/landscape-placeholder.svg"
               }
               className="w-full h-full object-cover"
               alt={`${product.name}, ${product.description}`}
@@ -37,14 +37,18 @@ export default function ProductDetail({ productObj, slug }) {
             <div className="flex w-full justify-between">
               <div className="flex flex-col">
                 <h2 className="pb-1 capitalize">{product.name}</h2>
-                <h3>
-                  {product.price.unit_amount > 0
-                    ? formatAmountForDisplay(
-                        product.price.unit_amount,
-                        product.price.currency
-                      )
-                    : "COMING SOON"}
-                </h3>
+                {product.price.unit_amount > 0 && (
+                  <h3
+                    className={
+                      product.price.unit_amount === 0 && "text-slate-400"
+                    }
+                  >
+                    {formatAmountForDisplay(
+                      product.price.unit_amount,
+                      product.price.currency
+                    )}
+                  </h3>
+                )}
               </div>
               <div className="lg:hidden">
                 <div className="border w-max">

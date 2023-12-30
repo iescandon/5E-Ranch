@@ -43,7 +43,7 @@ export default function AppLayout({ children }) {
   return (
     <>
       <Head>
-        <title>5E Ranch | Fines 100% Wagyu in Texas</title>
+        <title>5E Ranch | Finest 100% Wagyu in Texas</title>
         <meta
           name="description"
           content="At 5E Ranch we are stewards for the greatest and healthiest red meat on the market today. In addition to the sale of beef, we also specialize in the sale of yearlings, heifers and steers."
