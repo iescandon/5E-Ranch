@@ -17,6 +17,13 @@ export default function Menu({ menu }) {
     setSelectedTab(notificationsState.currentPage);
   }, [notificationsState.currentPage]);
 
+  const handleClick = (btn) => {
+    setSelectedTab(btn.label);
+    notificationsDispatch(setCurrentPage(btn.label));
+    notificationsDispatch(hideMenu());
+    document.getElementById("hamburger-menu").focus({ focusVisible: true });
+  };
+
   return (
     <NotificationsLayout show={menu.isOpen} notificationType={"menu"}>
       <div
@@ -45,31 +52,43 @@ export default function Menu({ menu }) {
         <div className="flex flex-col py-4">
           {menuBtns.map((btn, i) => {
             return (
-              <Link
-                href={btn.url}
-                className={`text-lg font-bold text-left p-2 hover:bg-slate-100 capitalize ${
-                  selectedTab === btn.label && "bg-slate-100"
-                }`}
-                key={btn.label}
-                onClick={() => {
-                  setSelectedTab(btn.label);
-                  notificationsDispatch(setCurrentPage(btn.label));
-                  notificationsDispatch(hideMenu());
-                  document
-                    .getElementById("hamburger-menu")
-                    .focus({ focusVisible: true });
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Tab" && menuBtns.length === i + 1) {
-                    e.preventDefault();
-                    document
-                      .getElementById("close-menu-btn")
-                      .focus({ focusVisible: true });
-                  }
-                }}
-              >
-                {btn.label}
-              </Link>
+              <>
+                {btn.url ? (
+                  <Link
+                    href={btn.url}
+                    className={`${
+                      btn.subMenu ? "pl-4 font-normal" : "font-bold"
+                    } text-lg font-bold text-left p-2 hover:bg-slate-100 capitalize ${
+                      selectedTab === btn.label && "bg-slate-100"
+                    }`}
+                    key={btn.label}
+                    onClick={() => {
+                      handleClick(btn);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Tab" && menuBtns.length === i + 1) {
+                        e.preventDefault();
+                        document
+                          .getElementById("close-menu-btn")
+                          .focus({ focusVisible: true });
+                      }
+                    }}
+                  >
+                    {btn.label}
+                  </Link>
+                ) : (
+                  <p
+                    className={`${
+                      btn.subMenu ? "pl-4 font-normal" : "font-bold"
+                    } text-lg font-bold text-left p-2 hover:bg-slate-100 capitalize ${
+                      selectedTab === btn.label && "bg-slate-100"
+                    }`}
+                    key={btn.label}
+                  >
+                    {btn.label}
+                  </p>
+                )}
+              </>
             );
           })}
         </div>

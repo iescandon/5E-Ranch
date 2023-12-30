@@ -1,8 +1,9 @@
 export const menuBtns = [
   { label: "home", url: "/" },
   { label: "about", url: "/about" },
-  { label: "beef", url: "/products/beef" },
-  { label: "cattle", url: "/products/cattle" },
-  { label: "merch", url: "/products/merch" },
+  { label: "products" },
+  { label: "beef", url: "/products/beef", subMenu: true },
+  { label: "cattle", url: "/products/cattle", subMenu: true },
+  { label: "merch", url: "/products/merch", subMenu: true },
   { label: "cart", url: "/cart" },
 ];

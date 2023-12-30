@@ -20,25 +20,29 @@ export default function CartItem({ item }) {
   return (
     <div className="flex items-center h-28 md:h-40 w-full justify-between border-b">
       <div className="flex items-center w-1/3 md:w-[55%]">
-        <Link
-          href={item.url}
-          onClick={() => {
-            notificationsDispatch(setCurrentPage(item.category));
-          }}
-        >
-          <img
-            src={item.img}
-            className="h-20 w-20 md:h-28 md:w-28 object-cover"
-            alt={item.name}
-          />
-        </Link>
+        <div className="relative">
+          <Link
+            href={item.url}
+            onClick={() => {
+              notificationsDispatch(setCurrentPage(item.category));
+            }}
+          >
+            <img
+              src={item.img}
+              className="h-20 w-20 md:h-28 md:w-28 object-cover"
+              alt={item.name}
+            />
+            <div className="md:hidden flex justify-center text-white absolute bg-black bg-opacity-70 bottom-0 w-full">
+              {item.name}
+            </div>
+          </Link>
+        </div>
         <div className="hidden md:block pl-4 md:pl-12">{item.name}</div>
       </div>
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-end w-1/3 md:w-[20%]">
-        <div className="md:hidden pb-2">{item.name}</div>
         <div className="border w-max">
           <button
-            className="p-2 md:p-4"
+            className="p-4"
             onClick={() => {
               if (item.quantity !== 1) {
                 cartDispatch(decrementItem({ id: item.id }));
@@ -49,7 +53,7 @@ export default function CartItem({ item }) {
           </button>
           <span>{item.quantity}</span>
           <button
-            className="p-2 md:p-4"
+            className="p-4"
             onClick={() => cartDispatch(incrementItem({ id: item.id }))}
           >
             +

@@ -46,11 +46,19 @@ export default function Cart() {
               return <CartItem item={item} key={item.id} />;
             })}
             <div className="flex flex-col md:items-end">
-              <div className="flex items-center my-8 justify-between md:justify-normal">
-                <h4 className="pr-12">Subtotal</h4>
-                <h3 className="font-semibold">{cartTotal}</h3>
+              <div className="md:inline-block">
+                <div className="flex items-center mt-8 justify-between">
+                  <h4 className="pr-12">Subtotal</h4>
+                  <h3 className="font-semibold">{cartTotal}</h3>
+                </div>
+                <div className="flex items-center md:mt-1 mb-8 justify-between">
+                  <h4 className="pr-12">Shipping & Taxes</h4>
+                  <h3 className="font-semibold">TBD</h3>
+                </div>
+                <div className="flex md:justify-end">
+                  <CheckoutBtn cartItems={cartItems} />
+                </div>
               </div>
-              <CheckoutBtn cartItems={cartItems} />
             </div>
           </>
         )}
