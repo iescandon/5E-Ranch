@@ -71,7 +71,7 @@ export default function Popover({ popover }) {
         {/* buttons */}
         <div className="flex justify-around space-x-6">
           <ViewCartBtn />
-          <CheckoutBtn cartItems={cartItems} inPopover={true} />
+          <CheckoutBtn cartItems={cartItems} inPopover />
         </div>
       </div>
     </NotificationsLayout>

@@ -1,25 +1,26 @@
 import getContent from "@/utils/getContent";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
 import ProductCard from "@/components/productCard";
 import { getProducts, getPrices } from "@/utils/getStripe";
 
 export default function Products({ productList, slug }) {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    setProducts(productList);
-  }, [productList]);
+  // useEffect(() => {
+  //   setProducts(productList);
+  //   console.log("dom loaded", productList);
+  // }, [productList]);
 
   return (
     <>
       <Navbar isBlack={true} />
       <div className="flex flex-col items-center">
-        {products.length === 0 ? (
+        {productList.length === 0 ? (
           <p>Products coming soon.</p>
         ) : (
           <div className="flex flex-wrap justify-center md:space-x-4 px-2">
-            {products?.map((product) => {
+            {productList?.map((product) => {
               return (
                 <ProductCard data={product} slug={slug} key={product.id} />
               );
