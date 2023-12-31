@@ -1,6 +1,6 @@
 export const menuBtns = [
   { label: "home", url: "/" },
-  { label: "about", url: "/about" },
+  { label: "Our Story", url: "/about" },
   { label: "products" },
   { label: "beef", url: "/products/beef", subMenu: true },
   { label: "cattle", url: "/products/cattle", subMenu: true },

@@ -72,11 +72,9 @@ export default function ProductDetail({ productObj, slug }) {
                 </div>
               </div>
             </div>
-            <div>
-              {product.metadata.long_description
-                ? product.metadata.long_description
-                : ""}
-            </div>
+            {product.metadata.long_description && (
+              <div>{product.metadata.long_description}</div>
+            )}
             <div className="hidden lg:block w-full">
               <div className="border w-max">
                 <button
