@@ -1,6 +1,6 @@
 # 5E Ranch
 
-A mock site for a ranch built with Next.js, Mapbox API, Tailwind CSS, and Contentful CMS. Integrated Stripe Checkout (in test mode) for product sales and implemented webhooks to manage post-purchase workflows. The project served as a playground for experimenting with modern CMS and payment processing integrations.
+A mock e-commer website for a ranch built with Next.js, Mapbox API, Tailwind CSS, and Contentful CMS. Integrated Stripe Checkout (test mode) and Contentful CMS to explore modern CMS and payment processing integrations. Implemented webhooks to manage post-purchase workflows.
 
 https://www.5ewagyu.com/
 
